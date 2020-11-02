@@ -1,8 +1,12 @@
 {% extends "layout.html" %}
-{% from "vignettes.html" import vignettes %}
-{% block content %}
+{% from "macros/vignettes.html" import vignettes %}
+
+{% block body %}
 <div class="container">
-{{this.body}}
+  <div class="separator-heading">
+    <h2>{{this.title}}</h2>
+  </div>
+   {{this.body}}
 </div>
 {% for v in this.children %}
     {{vignettes(v)}}

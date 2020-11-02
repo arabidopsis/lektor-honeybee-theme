@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400|Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet">
  
-    <link rel="stylesheet" type="text/css" href="{{' /static/css/styles.css' | asseturl}}" />
+    <link rel="stylesheet" type="text/css" href="{{'/static/css/styles.css' | asseturl}}" />
   
     {% include "partials/cdn-css.html" %}
 
@@ -69,7 +69,7 @@
 {% endblock header %}
 
 <main id="main-content">
-{% block content %}{% endblock %}
+{% block body %}{% endblock %}
 </main>
 </div>
 

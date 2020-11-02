@@ -1,0 +1,13 @@
+*.pyc
+.DS_Store
+._.*
+__pycache__
+.idea/
+.ipynb_checkpoints
+.vscode/
+*.swp
+*.bak
+node_modules
+package-lock.json
+Untitled*.ipynb
+example-site/

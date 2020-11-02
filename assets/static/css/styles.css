@@ -33,7 +33,7 @@ footer {
 
 
 
-h1,
+.separator-heading h1,
 .separator-heading h2,
 .separator-heading h3,
 .separator-heading h4,
@@ -48,13 +48,13 @@ h1,
   margin-top: 1em;
 }
 
-h1:before,
+.separator-heading h1:before,
 .separator-heading h2:before,
 .separator-heading h3:before,
 .separator-heading h4:before,
 .separator-heading h5:before,
 .separator-heading h6:before,
-h1:after,
+.separator-heading h1:after,
 .separator-heading h2:after,
 .separator-heading h3:after,
 .separator-heading h4:after,
