@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% from "vignettes.html" import vignettes %}
+{% block content %}
+<div class="container">
+{{this.body}}
+</div>
+{% for v in this.children %}
+    {{vignettes(v)}}
+{% endfor %}
+{% endblock %}

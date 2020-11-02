@@ -1,0 +1,25 @@
+<nav class="navbar navbar-default sticky-top bg-white">
+    <a class="navbar-brand"  href="{{ '/'|url }}">
+    <img src="{{'/static/img/bee.svg'|asseturl}}" style="height:1.2em"/>
+    Bee Health</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+        data-target="#navbar-collapse-1"  
+        aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ '/' |url }}">/home</a>
+        </li>
+        {% for page in site.query('/') %}
+          {% if page.path != '/404' %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{page.url_path | url }}">{{ page.path }}</a>
+          </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+</nav>

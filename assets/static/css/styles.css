@@ -1,0 +1,168 @@
+
+:root {
+  --header-color: #ffaa00;
+}
+
+body {
+  font-family: Raleway;
+}
+body, button, input, select, textarea {
+    font-size: 1.1em;
+    line-height: 1.6em;
+}
+
+
+.text-shadow { text-shadow: 3px 3px 7px #efefef; }
+
+
+nav.navbar .navbar-brand img {
+   height:1.6em;
+}
+
+header {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: scroll;
+  background-size: cover;
+  height: 50vh;
+  border-bottom: 1px var(--header-color) solid;
+}
+footer {
+  border-top: 1px var(--header-color) solid;
+}
+
+
+
+h1,
+.separator-heading h2,
+.separator-heading h3,
+.separator-heading h4,
+.separator-heading h5,
+.separator-heading h6 {
+  display:flex;
+  color: var(--header-color);
+  flex-direction:row;
+  justify-content:center;
+  text-align:center;
+  padding-bottom: .5em;
+  margin-top: 1em;
+}
+
+h1:before,
+.separator-heading h2:before,
+.separator-heading h3:before,
+.separator-heading h4:before,
+.separator-heading h5:before,
+.separator-heading h6:before,
+h1:after,
+.separator-heading h2:after,
+.separator-heading h3:after,
+.separator-heading h4:after,
+.separator-heading h5:after,
+.separator-heading h6:after {
+	background-color: var(--header-color);
+	content:'\a0';
+	flex-grow:1;
+	height:2px;
+	position:relative;
+	top:0.65em;
+}
+
+
+.parallax-window {
+  height: 180px;
+  background: transparent;
+  background-attachment:fixed;
+  /* position:relative; */
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center;
+  overflow: hidden;
+}
+@media (max-width:  576px) {
+    .parallax-window {
+        background-attachment: scroll;
+
+    }
+    .parallax-window blockquote {
+        font-size: 1em !important;
+        overflow-y: hidden;
+    }
+}
+.parallax-window blockquote {
+  color: gray;
+  font-size:1.5em;
+  background-color: rgba(230, 230, 230, .7);
+}
+
+/* from https://github.com/GianlucaGuarini/jQuery.BlackAndWhite */
+img.card-img-top {
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
+    transition: 0.3s ease-in;
+}
+
+img.card-img-top:hover {
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+    -webkit-filter: grayscale(0%);
+}
+.vignette.card, .more-reading.card { border:none; }
+
+
+.font-larger { font-size: larger; }
+/* for use with icons.svg */
+.icon {
+  display: inline-block;
+  fill: currentColor;
+  height: 1em;
+  position: relative;
+  top: -0.0625em;
+  vertical-align: middle;
+  width: 1em;
+}
+
+
+.markdown blockquote > p {
+  border-left: solid gray 3px;
+  padding-left: 2em;
+  color: gray;
+}
+
+
+i.feature-circle {
+  width: 72px;
+  height: 72px;
+  text-align: center;
+  background:var(--header-color);
+  padding: 10px;
+  color: #fff;
+  border-radius: 50%;
+  margin: 0 0 15px;
+  margin: 0 auto;
+  line-height: 1;
+  font-size: 40px;
+  line-height: 52px;
+  display: block;
+}
+
+
+.w-md-50 {
+  width: 50% !important;
+}
+@media (max-width: 991px) {
+  .w-md-50 { width:100% !important; }
+}
+
+/* when bootstrap flex-flow: column; */
+.card-deck {
+  align-items: center;
+}
+@media (min-width: 576px) {
+
+  /* when bootstrap flex-flow: row wrap; */
+  .card-deck {
+     align-items:stretch;
+  }
+
+}

@@ -1,0 +1,13 @@
+{% from "macros/vignette.html" import vignette %}
+{% macro vignettes(this) %}
+<div class="container">
+  <div class="separator-heading">
+    <h2>{{this.title}}</h2>
+  </div>
+  {{this.body}}
+  <div class="card-deck pt-5 justify-content-around" >
+    {% for b in this.vignettes.blocks %}{{ vignette(b) }}{% endfor %}
+  </div>
+</div>
+
+{% endmacro %}

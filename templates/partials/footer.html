@@ -1,0 +1,61 @@
+{# don't add a margin-top ... it stuffs up the max-height computation #}
+{% if debug %}
+{% endif %}
+<footer class="bg-light text-dark mt-1">
+  <div class="container">
+    <div class="justify-content-center">
+
+        <ul class="list-inline text-center pt-1">
+          <li class="list-inline-item">
+            <a href="/about"> About <span class="fas fa-book"></span> </a>
+          </li>
+          <li class="list-inline-item">|</li>
+          <li class="list-inline-item">
+            <a href="https://plantenergy.edu.au" target="_blank">© 2020 Plant Energy Biology</a>
+          </li>
+        </ul>
+    </div>
+
+    <style>
+    #logos a {text-align: center; }
+    #logos a img { height: 4em; }
+    </style>
+
+    <div id="logos" class="row d-none d-lg-flex justify-content-around align-self-center">
+
+
+        <a class="col-3" href="https://uwa.edu.au" target="_blank">
+            <img src="{{'/static/img/UWA-Full-Hor-CMYK-opt.svg'|asseturl }}"
+            title="The University of Western Australia"
+            alt="UWA logo"/>
+        </a>
+
+        <a class="col-3" href="http://www.crchoneybeeproducts.com" target="_blank">
+            <img src="{{'/static/img/cropped-crc-hbp-logo.svg'|asseturl }}"
+            title="COOPERATIVE RESEARCH CENTRE FOR HONEY BEE PRODUCTS"
+            alt="CRCHB"/>
+        </a>
+
+        <a class="col-3" href="https://plantenergy.edu.au" target="_blank">
+            <img src="{{'/static/img/PEB.Logo-Colour.CMYK-opt.svg'|asseturl }}"
+            title="Plant Energy Biology"
+            alt="Plant Energy Biology Logo"/>
+        </a>
+
+    </div>
+
+    <div class="text-center">
+      <small>
+        <a id="cc-license" rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+              <img alt="Creative Commons License" style="border-width:0"
+                   src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+        </a>
+        <br/>
+        This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+        Creative Commons Attribution 4.0 International License</a>
+
+        <span class="fas fa-code"></span> with <span class="fas fa-heart"></span> by IRC
+      </small>
+    </div>
+  </div>
+</footer>

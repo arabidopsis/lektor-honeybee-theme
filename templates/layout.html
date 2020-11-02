@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+    <title>{% block title %}Bee Health{% endblock %}</title>
+
+    {% include "partials/meta.html" %}
+
+    {% block meta %}{% endblock meta %}
+
+    <link rel='dns-prefetch' href='//fonts.googleapis.com' />
+
+    <link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+    <link rel="shortcut icon" href="{{'/static/img/bee.png'| asseturl}}"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400|Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet">
+ 
+    <link rel="stylesheet" type="text/css" href="{{' /static/css/styles.css' | asseturl}}" />
+  
+    {% include "partials/cdn-css.html" %}
+
+    {% block cdn_css %}{% endblock %}
+
+    <style>
+      body, html {
+        height: 100%;
+        width: 100%;
+      }
+
+      body {
+          display: flex;
+          flex-direction: column;
+      }
+      .content {
+          flex: 1 0 auto;
+      }
+      footer {
+          flex-shrink: 0;
+      }
+      header {
+          background-image: url({{'/static/img/honey-comb-w1000.jpg' | asseturl }});
+      }
+
+    </style>
+    {% block css %}{% endblock css %}
+
+    <script type="text/javascript">
+    // some modules expect this global object
+    window.SubaCrop = { };
+    </script>
+    {% block header_js %}{% endblock %}
+    {# PEB greens clockwise darkest to lightest #768d28 #a6bd28 #becf5a #dee5a2 #}
+
+</head>
+<body>
+<div class="content">
+
+{% block navbar %}
+  {% include "partials/navbar.html" %}
+{% endblock navbar %}
+
+{% block header %}
+    {% include "partials/header.html" %}
+{% endblock header %}
+
+<main id="main-content">
+{% block content %}{% endblock %}
+</main>
+</div>
+
+{% block footer %}
+    {% include "partials/footer.html" %}
+{% endblock footer %}
+
+{% include "partials/cdn-js.html" %}
+
+{% block js %}{% endblock js %}
+</body>
+</html>
