@@ -11,6 +11,4 @@ node_modules
 package-lock.json
 Untitled*.ipynb
 templates/shortcodes
-example-site/content/grassl-publications/
-example-site/content/**/*.jpg
-example-site/content/**/*.jpg.lr
+example-site/

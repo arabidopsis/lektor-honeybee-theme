@@ -1,0 +1,17 @@
+
+
+{% macro slug(c) %}
+{% if c %}
+  {{slug(c.parent)}}
+  {%if c == this %}
+  <li class="breadcrumb-item active">{{c._slug}}</li>
+  {% else %}
+  <li class="breadcrumb-item"><a href="{{c|url}}">{{c._slug}}</a></li>
+  {% endif %}
+{% endif %}
+{% endmacro %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    {{slug(this)}}
+  </ol>
+</nav>

@@ -1,0 +1,22 @@
+{% macro researcher(person,imgsize=100) %}
+<div class="card border-0" style="min-width:200px; max-width:400px;">
+  <a href="{{person|url}}">
+  {% set i = person.attachments.images.first() %}
+    {% if i %}
+    <img class="card-img-top rounded-circle" style="height:{{imgsize}}px;width:{{imgsize}}px"
+        src="{{i.thumbnail(height=imgsize,width=imgsize, crop=True)|url}}"
+        alt="{{i.description}}"> 
+    {% endif %}
+  </a>
+  <div class="card-body">
+    <h4 class="card-title">Dr {{person.name}}</h4>
+    <p class="card-text">{{ person.description }}</p>
+  </div>
+  <footer>Follow me on
+    <a href="/{{person.name}}" title="Twitter"><span class="fab fa-twitter"></span></a>
+    <a href="/{{person.name}}" title="Facebook"><span class="fab fa-facebook"></span></a>
+    <a href="/{{person.name}}" title="Instagram"><span class="fab fa-instagram"></span></a>
+    <a href="/{{person.name}}" title="Snapchat"><span class="fab fa-snapchat"></span></a>
+    <a href="/{{person.name}}" title="Google+"><span class="fab fa-google-plus"></span></a>
+</div>
+{% endmacro %}

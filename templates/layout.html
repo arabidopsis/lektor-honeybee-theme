@@ -45,7 +45,11 @@
       header {
           background-image: url({{ site.get('/extras/globals').banner_image | url }});
       }
-
+      .nav-item.active > .nav-link { font-weight: bold; }
+      nav .breadcrumb { 
+          position:absolute; 
+          background: transparent;
+      }
     </style>
     {% block css %}{% endblock css %}
 
@@ -65,6 +69,7 @@
 {% endblock navbar %}
 
 {% block header %}
+    {% include "partials/breadcrumbs.html" %}
     {% include "partials/header.html" %}
 {% endblock header %}
 

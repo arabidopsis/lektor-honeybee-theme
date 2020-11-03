@@ -15,7 +15,7 @@
         </li>
         {% for page in site.query('/') %}
           {% if page.path != '/404' %}
-          <li class="nav-item">
+          <li class="nav-item{% if this.path == page.path %} active{%endif%}">
             <a class="nav-link" href="{{page.url_path | url }}">{{ page.path }}</a>
           </li>
           {% endif %}

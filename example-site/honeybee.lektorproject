@@ -6,7 +6,7 @@ url = 'http://localhost:5000/'
 [theme_settings]
 # ['bootstrap', 'mickie', 'hollar', 'sunset','wandoo', 'graymor', 'electro',
 #         'lymcha', 'deeply', 'minco', 'skeeblu', 'preptor', 'monotone'] 
-theme = hollar
+theme = lymcha
 banner = /static/img/beeflower2.jpg
 [packages]
 # Put example-site plugins here.
