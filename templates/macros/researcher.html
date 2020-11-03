@@ -1,6 +1,6 @@
-{% macro researcher(person,imgsize=100) %}
-<div class="card border-0" style="min-width:200px; max-width:400px;">
-  <a href="{{person|url}}">
+{% macro researcher(person,imgsize=100, full=False) %}
+<div class="card border-0 mb-2" style="min-width:{{imgsize}}px">
+  <a href="{{person|url}}" style="margin:0 auto;">
   {% set i = person.attachments.images.first() %}
     {% if i %}
     <img class="card-img-top rounded-circle" style="height:{{imgsize}}px;width:{{imgsize}}px"
@@ -10,7 +10,13 @@
   </a>
   <div class="card-body">
     <h4 class="card-title">Dr {{person.name}}</h4>
-    <p class="card-text">{{ person.description }}</p>
+    <p class="card-text">
+    {% if full %}
+    <div class="markdown">{{ person.body }}</div>
+    {%else%}
+    {{ person.description or i.description }}
+    {% endif %}
+    </p>
   </div>
   <footer>Follow me on
     <a href="/{{person.name}}" title="Twitter"><span class="fab fa-twitter"></span></a>

@@ -27,6 +27,9 @@
     {% block cdn_css %}{% endblock %}
 
     <style>
+    :root {
+        --highlight-color: {{site.get('/extras/globals').highlight}};
+    }
       body, html {
         height: 100%;
         width: 100%;
@@ -43,12 +46,13 @@
           flex-shrink: 0;
       }
       header {
-          background-image: url({{ site.get('/extras/globals').banner_image | url }});
+          background-image: url({{ site.get('/').attachments.images.first() | url }});
       }
       .nav-item.active > .nav-link { font-weight: bold; }
-      nav .breadcrumb { 
+      nav .breadcrumb {
+          z-index: 1;
           position:absolute; 
-          background: transparent;
+          background: rgba(255,200,200,.3);
       }
     </style>
     {% block css %}{% endblock css %}

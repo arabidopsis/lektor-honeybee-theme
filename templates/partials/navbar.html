@@ -10,7 +10,7 @@
 
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
+        <li class="nav-item{% if this.path == '/' %} active{%endif%}">
           <a class="nav-link" href="{{ '/' |url }}">/home</a>
         </li>
         {% for page in site.query('/') %}

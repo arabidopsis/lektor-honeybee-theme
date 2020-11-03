@@ -1,6 +1,10 @@
 
 :root {
-  --header-color: #ffaa00;
+  --highlight-color: #ffaa00;
+}
+
+.markdown hr {
+  clear: both;
 }
 
 body {
@@ -10,7 +14,6 @@ body, button, input, select, textarea {
     font-size: 1.1em;
     line-height: 1.6em;
 }
-
 
 .text-shadow { text-shadow: 3px 3px 7px #efefef; }
 
@@ -25,10 +28,18 @@ header {
   background-attachment: scroll;
   background-size: cover;
   height: 50vh;
-  border-bottom: 1px var(--header-color) solid;
+  border-bottom: 1px var(--highlight-color) solid;
+  position: relative;
+}
+header .logo {
+  position: absolute;
+  right: .5em;
+  bottom: .5em;
+  width: 6em;
+  height: auto;
 }
 footer {
-  border-top: 1px var(--header-color) solid;
+  border-top: 1px var(--highlight-color) solid;
 }
 
 
@@ -40,7 +51,7 @@ footer {
 .separator-heading h5,
 .separator-heading h6 {
   display:flex;
-  color: var(--header-color);
+  color: var(--highlight-color);
   flex-direction:row;
   justify-content:center;
   text-align:center;
@@ -60,7 +71,7 @@ footer {
 .separator-heading h4:after,
 .separator-heading h5:after,
 .separator-heading h6:after {
-	background-color: var(--header-color);
+	background-color: var(--highlight-color);
 	content:'\a0';
 	flex-grow:1;
 	height:2px;
@@ -92,7 +103,7 @@ footer {
 .parallax-window blockquote {
   color: gray;
   font-size:1.5em;
-  background-color: rgba(230, 230, 230, .7);
+  background-color: rgba(230, 230, 230, .6);
 }
 
 /* from https://github.com/GianlucaGuarini/jQuery.BlackAndWhite */
@@ -130,20 +141,17 @@ img.card-img-top:hover {
 }
 
 
-i.feature-circle {
-  width: 72px;
-  height: 72px;
+i.feature-circle, span.feature-circle {
+  width: 2em;
+  height: 2em;
+  font-size: 3em;
+  line-height: 2em;
+  margin: .1em;
+  vertical-align: middle;
   text-align: center;
-  background:var(--header-color);
-  padding: 10px;
+  background:var(--highlight-color);
   color: #fff;
   border-radius: 50%;
-  margin: 0 0 15px;
-  margin: 0 auto;
-  line-height: 1;
-  font-size: 40px;
-  line-height: 52px;
-  display: block;
 }
 
 

@@ -1,6 +1,10 @@
 {% extends "layout.html" %}
 {% block title %}Sitemap{% endblock %}
 {% block body %}
+<div class="container mt-3">
+  <div class="separator-heading">
+    <h2>Site Map</h2>
+  </div>
 <ul class="sitemap">
   {% for page in [site.root] if page.record_label recursive %}
   <li><a href="{{ page|url }}">{{ page.record_label }}</a>
@@ -10,4 +14,5 @@
   </li>
   {% endfor %}
 </ul>
+</div>
 {% endblock %}

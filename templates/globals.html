@@ -2,7 +2,7 @@
 {% block title %}global site config{% endblock %}
 {% block body %}
 
-<h2>Banner Image</h2>
+<h2>Highlight Color</h2>
 
-<img src="{{this.banner_image | url}}" />
+<div style="background-color:{{this.highlight}}; width:100px; height:100px;" ></div>
 {% endblock %}

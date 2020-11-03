@@ -1,3 +1,5 @@
 _template: sitemap.xml
 ---
 _model: none
+---
+_hidden: yes
