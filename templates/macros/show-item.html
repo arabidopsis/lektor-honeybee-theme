@@ -1,0 +1,12 @@
+{# display contents of an "item" #}
+{% macro show_item(item) %}
+    <ul class="list-inline">
+    <li class="list-inline-item">path:{{item.path}}</li>
+    <li class="list-inline-item">|</li>
+    <li class="list-inline-item">url_path:{{item.url_path}}</li>
+    <li class="list-inline-item">|</li>
+    <li class="list-inline-item">title:{{item.title}}</li>
+    <li class="list-inline-item">|</li>
+    <li class="list-inline-item">_model:{{item._model }}</li>
+    </ul>
+{% endmacro %}

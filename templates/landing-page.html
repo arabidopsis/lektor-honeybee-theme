@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% from "macros/vignettes.html" import vignettes %}
+{% from "macros/carousel.html" import carousel %}
+{% from "macros/show-item.html" import show_item %}
+{% block body %}
+<div class="container">
+  <div class="separator-heading">
+    <h2>{{this.title}}</h2>
+  </div>
+   {{this.body}}
+</div>
+<div class="container">
+<h1>this.children</h1>
+{% for v in this.children %}
+    {{ show_item(v) }}
+    <br/>
+{% endfor %}
+<h1>site.query('/')</h1>
+{% for v in site.query('/') %}
+    {{ show_item(v) }}
+    <br/>
+{% endfor %}
+<h1>site.query('/vignettes')</h1>
+{% for v in site.query('/vignettes') %}
+    {{ show_item(v) }}
+    <br/>
+{% endfor %}
+<hr>
+{{ vignettes(site.get('/extras/vignettes'))}}
+<hr>
+{{ carousel(site.get('/extras/highlights').attachments.images)}}
+{% endblock %}

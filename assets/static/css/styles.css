@@ -4,7 +4,7 @@
 }
 
 body {
-  font-family: Raleway;
+  font-family: Raleway!important;
 }
 body, button, input, select, textarea {
     font-size: 1.1em;
