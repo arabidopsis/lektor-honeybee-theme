@@ -3,7 +3,9 @@ name = honeybee
 url_style = absolute
 
 [theme_settings]
-theme = electro
-
+# ['bootstrap', 'mickie', 'hollar', 'sunset','wandoo', 'graymor', 'electro',
+#         'lymcha', 'deeply', 'minco', 'skeeblu', 'preptor', 'monotone'] 
+theme = hollar
+banner = /static/img/beeflower2.jpg
 [packages]
 # Put example-site plugins here.

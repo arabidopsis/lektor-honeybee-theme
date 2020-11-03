@@ -5,11 +5,13 @@
    <h1>{{this.title}}</h1>
   </div>
   {{ this.body }}
+
+  <h3>Publications</h3>
   <hr>
-  {% for blk in this.publications.blocks %}
-  <div>{{blk}}</div>
+  {% for pub in this.children %}
+      {{pub.date}}: <a href="{{pub|url}}">{{pub.title}}</a>
+      <hr/>
   {% endfor %}
 
-  </div>
 
 {% endblock body %}

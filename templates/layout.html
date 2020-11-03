@@ -43,7 +43,7 @@
           flex-shrink: 0;
       }
       header {
-          background-image: url({{'/static/img/honey-comb-w1000.jpg' | asseturl }});
+          background-image: url({{ site.get('/extras/globals').banner_image | url }});
       }
 
     </style>
