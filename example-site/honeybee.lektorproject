@@ -1,6 +1,7 @@
 [project]
 name = honeybee
 url_style = absolute
+url = 'http://localhost:5000/'
 
 [theme_settings]
 # ['bootstrap', 'mickie', 'hollar', 'sunset','wandoo', 'graymor', 'electro',

@@ -1,0 +1,41 @@
+_model: page
+---
+title: Contact Us
+---
+body:
+
+
+# Contacting and finding Honey Bee Health
+
+We here provide you with our contact details, a map where to find us.
+
+## UWA contact
+
+Bayliss (formally MCS) Building M316 <i class="fas fa-map-marker" style="color:#3333ff" aria-hidden="true"></i>
+
+The University of Western Australia WA 6009 Crawley
+
+* **<i class="fas fa-phone"></i>**: +61 8 6488 4495
+* **<i class="fas fa-fax"></i>**: +61 8 6488 4401
+* **<i class="fas fa-at"></i>**: some-where[at]uwa.edu.au
+
+## My card
+
+![card :w-50](/static/img/cta/card.svg)
+
+## How to find us
+
+Click on icons like <i class="fas fa-map-marker" style="color:#3333ff" aria-hidden="true"></i>
+in the map for more information about facilities.
+
+<div class="embed-responsive embed-responsive-16by9 w-100">
+  <iframe class="embed-responsive-item"
+    src="http://maps.google.com.au/maps/ms?hl=en&amp;ie=UTF8&amp;t=h&amp;msa=0&amp;msid=110479394355666920620.000479067dcf6df18c9f3&amp;ll=-31.983017,115.818322&amp;spn=0.00728,0.012875&amp;z=16&amp;output=embed"
+
+    allowfullscreen>
+    <!-- can't use http:// for src= mistune seems to stuff it up -->
+  </iframe>
+</div>
+
+[View](http://maps.google.com.au/maps/ms?hl=en&amp;ie=UTF8&amp;t=h&amp;msa=0&amp;msid=110479394355666920620.000479067dcf6df18c9f3&amp;ll=-31.983017,115.818322&amp;spn=0.00728,0.012875&amp;z=16&amp;source=embed)
+Honey Bee Health in a larger map.
