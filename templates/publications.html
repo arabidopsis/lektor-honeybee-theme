@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body %}
+  <div class="container">
+  <div class="separator-heading">
+   <h1>{{this.title}}</h1>
+  </div>
+  {{ this.body }}
+  <hr>
+  {% for blk in this.publications.blocks %}
+  <div>{{blk}}</div>
+  {% endfor %}
+
+  </div>
+
+{% endblock body %}

@@ -1,0 +1,9 @@
+[project]
+name = honeybee
+url_style = absolute
+
+[theme_settings]
+theme = electro
+
+[packages]
+# Put example-site plugins here.

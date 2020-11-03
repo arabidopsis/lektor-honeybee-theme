@@ -1,16 +1,16 @@
 
 
-{% macro carousel(images) %}
+{% macro carousel(images, height=480) %}
 {% set id = get_random_id() %}
 <div id="{{id}}" class="carousel slide bg-light" data-ride="carousel">
   <div class="carousel-inner">
     {% for img in images %}
     <div class="carousel-item {{ 'active' if loop.index0 ==0 else ''}}">
       <img class="d-block mx-auto" style="height:400px;"
-      src="{{img.thumbnail(480) | url}}" alt="{{loop.index}} slide">
+      src="{{img.thumbnail(height=height) | url}}" alt="{{loop.index}} slide">
       <div class="carousel-caption d-none d-md-block">
         
-        <p>{{ img.description |truncate(30) }}</p>
+        <p>{{ img.description | truncate(30) }}</p>
       </div>
     </div>
     {% endfor %}
