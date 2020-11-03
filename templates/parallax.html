@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+{% from "macros/parallax.html" import parallax %}
+{% block title %}{{this.title}}{% endblock %}
+{% block body %}
+HERE {{this}} {{this.attachments}}
+  {{parallax(this)}}
+{% endblock %}

@@ -1,10 +1,11 @@
-import click
 import os
 import random
-from lektor.databags import load_databag
-import lorem
 from datetime import datetime, timedelta
 import re
+import click
+from lektor.databags import load_databag
+import lorem
+
 
 R = {
     "date": lambda: (datetime.now() - timedelta(random.random() * 2000)).date(),
@@ -49,4 +50,4 @@ def populate(inifile):
 
 
 if __name__ == "__main__":
-    populate()
+    populate()  # pylint: disable=no-value-for-parameter

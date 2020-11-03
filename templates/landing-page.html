@@ -2,6 +2,7 @@
 {% from "macros/vignettes.html" import vignettes %}
 {% from "macros/carousel.html" import carousel %}
 {% from "macros/show-item.html" import show_item %}
+{% from "macros/parallax.html" import parallax %}
 {% block body %}
 <div class="container">
   <div class="separator-heading">
@@ -25,6 +26,10 @@
     {{ show_item(v) }}
     <br/>
 {% endfor %}
+<hr>
+</div>
+{{ parallax(site.get('/extras/parallax-1'))}}
+<div class="container">
 <hr>
 {{ vignettes(site.get('/extras/vignettes'))}}
 <hr>
