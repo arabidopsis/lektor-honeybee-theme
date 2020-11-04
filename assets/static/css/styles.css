@@ -38,10 +38,11 @@ header .logo {
   width: 6em;
   height: auto;
 }
+
+
 footer {
   border-top: 1px var(--highlight-color) solid;
 }
-
 
 
 .separator-heading h1,

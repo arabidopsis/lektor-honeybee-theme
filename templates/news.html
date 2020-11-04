@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% from "macros/news-item.html" import news_item %}
+{% from "macros/pagination.html" import render_pagination %}
+
+{% block body %}
+<div class="container">
+  <div class="separator-heading">
+    <h2>{{this.title}}</h2>
+  </div>
+  <div class="markdown">
+   {{this.body}}
+  </div>
+
+  <div class="separator-heading">
+    <h2>Latest News</h2>
+  </div>
+  <div class="card-deck pt-5 justify-content-around">
+      {% for p in this.pagination.items %}
+        {{ news_item(p, imgsize=200) }}
+      {% endfor %}
+  </div>
+  {% if this.pagination.pages > 1 %}
+    {{ render_pagination(this.pagination) }}
+  {% endif %}
+
+
+</div>
+{% endblock %}

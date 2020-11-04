@@ -20,40 +20,47 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400|Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet">
  
-    <link rel="stylesheet" type="text/css" href="{{'/static/css/styles.css' | asseturl}}" />
   
     {% include "partials/cdn-css.html" %}
+
+    <link rel="stylesheet" type="text/css" href="{{'/static/css/styles.css' | asseturl}}" />
 
     {% block cdn_css %}{% endblock %}
 
     <style>
-    :root {
-        --highlight-color: {{site.get('/extras/globals').highlight}};
-    }
-      body, html {
-        height: 100%;
-        width: 100%;
-      }
+        :root {
+            --highlight-color: {{site.get('/extras/globals').highlight}};
+        }
+        body, html {
+            height: 100%;
+            width: 100%;
+        }
 
-      body {
-          display: flex;
-          flex-direction: column;
-      }
-      .content {
-          flex: 1 0 auto;
-      }
-      footer {
-          flex-shrink: 0;
-      }
-      header {
-          background-image: url({{ site.get('/').attachments.images.first() | url }});
-      }
-      .nav-item.active > .nav-link { font-weight: bold; }
-      nav .breadcrumb {
-          z-index: 1;
-          position:absolute; 
-          background: rgba(255,200,200,.3);
-      }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        body > .content {
+            flex: 1 0 auto;
+        }
+        body > footer {
+            flex-shrink: 0;
+        }
+        body > .content > header {
+            background-image: url({{ site.get('/').attachments.images.first() | url }});
+        }
+        
+        .nav-item.active > .nav-link { font-weight: bold; }
+        
+        nav .breadcrumb {
+            z-index: 1;
+            position:absolute; 
+            background: rgba(255,200,200,.3);
+        }
+
+        footer .logos a { text-align: center; }
+        footer .logos a img { height: 4em; }
+
     </style>
     {% block css %}{% endblock css %}
 

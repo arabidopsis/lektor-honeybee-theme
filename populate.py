@@ -10,6 +10,11 @@ import lorem
 import shutil
 
 
+def multi_select(choices):
+    n = random.randint(1, len(choices))
+    return ", ".join(random.sample(choices, n))
+
+
 R = {
     "date": lambda d: (datetime.now() - timedelta(random.random() * 2000)).date(),
     "string": lambda d: lorem.get_sentence(),
@@ -22,24 +27,36 @@ R = {
         lorem.get_word(3).title() for i in range(random.randint(1, 5))
     ),
     "select": lambda d: random.choice([s.strip() for s in d["choices"].split(",")]),
-    "checkboxes": lambda d: random.choice([s.strip() for s in d["choices"].split(",")]),
+    "checkboxes": lambda d: multi_select([s.strip() for s in d["choices"].split(",")]),
 }
 
 
-def add_image(todir):
+def find_images(todir):
+    imgs = os.listdir(todir)
+    for j in imgs:
+        f = join(todir, j)
+        if j.lower().endswith((".jpeg", ".jpg")) and "bite" not in j.lower():
+            yield f
+        if os.path.isdir(f):
+            yield from find_images(f)
+
+
+def image_getter():
     pics = "/home/ianc/Pictures"
-    jpg = [
-        j
-        for j in os.listdir(pics)
-        if j.lower().endswith((".jpeg", ".jpg")) and "bite" not in j.lower()
-    ]
-    c = random.choice(jpg)
-    shutil.copy(join(pics, c), join(todir, c))
-    with open(join(todir, c + ".lr"), "w") as fp:
-        print(f"description: {lorem.get_sentence()}", file=fp)
+    all_images = list(find_images(pics))
+
+    def get_image(todir):
+        c = random.choice(all_images)
+        _, fname = os.path.split(c)
+        shutil.copy(join(pics, c), join(todir, fname))
+        with open(join(todir, fname + ".lr"), "w") as fp:
+            print(f"description: {lorem.get_sentence()}", file=fp)
+
+    return get_image
 
 
 def load_full_model(inifile):
+
     db = load_databag(inifile)
     m = db["model"]
     if "inherits" in m:
@@ -53,12 +70,16 @@ def load_full_model(inifile):
 
 
 @click.command()
-@click.option("-t", "--target", help="target directory")
+@click.option("-t", "--target", help="target subdirectory of content")
 @click.option("-n", "--niter", default=5, help="number of entries")
 @click.argument("model")
 def populate(model, target, niter):
     """Create some random `contents.lr` files from a model file."""
     db = load_full_model(model)
+
+    add_image = lambda d: None
+    if target:
+        add_image = image_getter()
 
     def gen():
         entry = {}

@@ -1,18 +1,18 @@
-
-
-{% macro slug(c) %}
-{% if c %}
+{%- macro slug(c) -%}
+{%- if c -%}
   {{slug(c.parent)}}
-  {%if c == this %}
-  <li class="breadcrumb-item active">{{c._slug}}</li>
-  {% else %}
+  {%- if c == this -%}
+  <li class="breadcrumb-item active">{{c|page_slugs|join('/')}}</li> 
+  {%- else -%}
   <li class="breadcrumb-item"><a href="{{c|url}}">{{c._slug}}</a></li>
-  {% endif %}
-{% endif %}
-{% endmacro %}
+  {%- endif -%}
+{%- endif -%}
+{%- endmacro -%}
 
+{%- if this.path != '/' -%}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     {{slug(this)}}
   </ol>
 </nav>
+{%- endif -%}

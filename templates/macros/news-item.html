@@ -1,0 +1,29 @@
+{% macro news_item(this, imgsize=100, full=False) %}
+<div class="card border-0 mb-2" style="min-width:{{imgsize}}px">
+  
+  <a href="{{this|url}}" style="margin:0 auto; float:right;">
+  {% set i = this.attachments.images.first() %}
+    {% if i %}
+    <img class="card-img-top" style="height:{{imgsize}}px;width:{{imgsize}}px"
+        src="{{i.thumbnail(height=imgsize,width=imgsize, crop=True)|url}}"
+        alt="{{i.title}}"> 
+    {% endif %}
+  </a>
+  <div class="card-body">
+    <h4 class="card-title">{{this.title}}</h4>
+    <p class="card-text">
+    Published on: {{this.date}}
+    Tags: {{this.tags|join(', ')}}
+    {% if full %}
+    <div class="markdown">{{ this.body }}</div>
+    {% endif %}
+    </p>
+  </div>
+  {% if full %}
+  <footer>Follow us on:
+    <a href="/{{config.THEME_SETTINGS.twitter}}" title="Twitter"><span class="fab fa-twitter"></span></a>
+    <a href="/{{config.THEME_SETTINGS.facebook}}" title="Facebook"><span class="fab fa-facebook"></span></a>
+  </footer>
+  {% endif %}
+</div>
+{% endmacro %}
