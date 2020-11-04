@@ -28,6 +28,7 @@ R = {
     ),
     "select": lambda d: random.choice([s.strip() for s in d["choices"].split(",")]),
     "checkboxes": lambda d: multi_select([s.strip() for s in d["choices"].split(",")]),
+    "pubmed": lambda d: str(random.randint(1_000_000, 9_999_999)),
 }
 
 

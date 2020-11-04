@@ -1,17 +1,22 @@
 {% extends "layout.html" %}
+{% from "macros/publication.html" import publication %}
 {% block body %}
   <div class="container">
-  <div class="separator-heading">
-   <h1>{{this.title}}</h1>
-  </div>
-  {{ this.body }}
+    <div class="separator-heading">
+      <h1>{{this.title}}</h1>
+    </div>
+    <div class="markdown">{{ this.body }}</div>
+    
+    <div class="separator-heading">
+      <h3>{{this.title}}</h3>
+    </div>
 
-  <h3>Publications</h3>
-  <hr>
-  {% for pub in this.children %}
-      {{pub.date}}: <a href="{{pub|url}}">{{pub.title}}</a>
+    {% for pub in this.children %}
+      <div class="publication">
+      {{publication(pub, full=False)}}
+      </div>
       <hr/>
-  {% endfor %}
-
+    {% endfor %}
+  </div>
 
 {% endblock body %}
