@@ -3,8 +3,8 @@
 {% extends "layout.html" %}
 {% from "macros/carousel.html" import carousel %}
 {% block body %}
-<h3>{{ this.title }}</h3>
-  {{this.text }}
+  <h3>{{ this.title }}</h3>
+  <div class="markdown">{{ this.body }}</div>
   {{ carousel(this.attachments.images) }}
 
 {% endblock %}

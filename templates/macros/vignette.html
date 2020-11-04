@@ -3,11 +3,11 @@
 <div class="card text-center border-0" style="min-width:200px; max-width:400px;">
   <a href="{{b.link}}">
   <img class="card-img-top"
-    src="{{('/static/img/cta/cta-icon_' + b.icon + '-opt.svg') | asseturl }}"
+    src="{{ ('/static/img/cta/cta-icon_' + b.icon + '-opt.svg') | asseturl }}"
     alt="{{b.icon}}">
 </a>
   <div class="card-body" >
-    <h4 class="card-title">{{b.title}}</h4>
+    <h4 class="card-title">{{ b.title }}</h4>
     <p class="card-text">{{ b.text }}</p>
   </div>
   <div class="xcard-footer">

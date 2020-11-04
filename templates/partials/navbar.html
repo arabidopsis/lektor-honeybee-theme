@@ -1,4 +1,5 @@
-<nav class="navbar navbar-default navbar-expand-lg sticky-top bg-white">
+{% set bg = 'dark' if is_dark_theme else 'light' %}
+<nav class="navbar navbar-default navbar-expand-lg sticky-top bg-{{bg}}">
     <a class="navbar-brand"  href="{{ '/'|url }}">
     <img src="{{'/static/img/bee.svg'|asseturl}}" style="height:1.2em"/>
     Bee Health</a>

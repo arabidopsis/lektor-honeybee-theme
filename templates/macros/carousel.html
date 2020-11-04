@@ -2,11 +2,12 @@
 
 {% macro carousel(images, height=480) %}
 {% set id = get_random_id() %}
-<div id="{{id}}" class="carousel slide bg-light" data-ride="carousel">
+{% set bg = 'dark' if is_dark_theme else 'light' %}
+<div id="{{id}}" class="carousel slide bg-{{bg}}" data-ride="carousel">
   <div class="carousel-inner">
     {% for img in images %}
     <div class="carousel-item {{ 'active' if loop.index0 ==0 else ''}}">
-      <img class="d-block mx-auto" style="height:400px;"
+      <img class="d-block mx-auto" style="height:{{height}}px;"
       src="{{img.thumbnail(height=height) | url}}" alt="{{loop.index}} slide">
       <div class="carousel-caption d-none d-md-block">
         
@@ -17,12 +18,12 @@
   </div>
   <a class="carousel-control-prev" href="#{{id}}"
       role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true"></span>
+    <span class="carousel-control-prev-icon bg-{{bg}} rounded-circle" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
   <a class="carousel-control-next" href="#{{id}}"
       role="button" data-slide="next">
-    <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
+    <span class="carousel-control-next-icon bg-{{bg}} rounded-circle" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
 </div>

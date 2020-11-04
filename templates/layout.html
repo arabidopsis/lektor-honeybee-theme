@@ -23,7 +23,11 @@
   
     {% include "partials/cdn-css.html" %}
 
-    <link rel="stylesheet" type="text/css" href="{{'/static/css/styles.css' | asseturl}}" />
+    <link rel="stylesheet" type="text/css" href="{{'/static/css/honeybee-styles.css' | asseturl}}" />
+    {% set bootstrap =  config.THEME_SETTINGS.bootstrap %}
+    {% if bootstrap %}
+    <link rel="stylesheet" type="text/css" href="{{('/static/css/' ~ bootstrap) | asseturl}}" />
+    {% endif %}
 
     {% block cdn_css %}{% endblock %}
 
@@ -74,7 +78,6 @@
 </head>
 <body>
 <div class="content">
-
 {% block navbar %}
   {% include "partials/navbar.html" %}
 {% endblock navbar %}
@@ -83,7 +86,6 @@
     {% include "partials/breadcrumbs.html" %}
     {% include "partials/header.html" %}
 {% endblock header %}
-
 <main id="main-content">
 {% block body %}{% endblock %}
 </main>
