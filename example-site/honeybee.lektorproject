@@ -8,5 +8,6 @@ url = 'http://localhost:5000/'
 #         'lymcha', 'deeply', 'minco', 'skeeblu', 'preptor', 'monotone'] 
 theme = lymcha
 banner = /static/img/beeflower2.jpg
+
 [packages]
 # Put example-site plugins here.

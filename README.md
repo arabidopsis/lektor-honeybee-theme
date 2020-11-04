@@ -1,17 +1,19 @@
 # honeybee
 
-This is where a description of your theme goes.
-Provide usage instructions here.
+This theme requires a [Lektor plugin](https://github.com/arabidopsis/lektor-shortcodes).
 
-Remember to fill this out after creating your theme and to add a
-License file. Now go add some theme components!
+Add to the `[packages]` section of your lektorproject configuration file
 
-You can make
+```ini
+[packages]
+https://github.com/arabidopsis/lektor-shortcodes/archive/main.tar.gz = ""
+```
 
-- assets
-- flowblocks
-- models
-- templates
+This still uses pip so the versioning info is not required.
 
-Just put those folders here and they'll be picked up when your
-theme is used.
+OR you can download the repository into your packages directory
+
+```bash
+git clone https://github.com/arabidopsis/lektor-shortcodes.git $(lektor project-info --tree)/packages/
+lektor plugins list # list will install any newly found plugins
+```
