@@ -1,0 +1,4 @@
+{% macro publication(pub, full=False) %}
+    {{pub.date}}: <a href="{{pub|url}}">{{pub.title}}</a>
+    {%if pub.pubmed %}<a target="_blank" href="https://pubmed.ncbi.nlm.nih.gov/{{pub.pubmed}}/">PubMed: {{pub.pubmed}}</a>{% endif %}
+{% endmacro %}
