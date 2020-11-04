@@ -51,7 +51,7 @@
             flex-shrink: 0;
         }
         body > .content > header {
-            background-image: url({{ site.get('/').attachments.images.first() | url }});
+            background-image: url({{ site.get('/').attachments.images.first().thumbnail(width=1600) | url }});
         }
         
         .nav-item.active > .nav-link { font-weight: bold; }
