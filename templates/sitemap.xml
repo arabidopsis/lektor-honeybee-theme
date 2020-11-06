@@ -4,7 +4,7 @@
   {%- for page in [site.root] if page != this recursive %}
   <url><loc>{{ page|url(external=true) }}</loc>
   <changefreq>{{cf}}</changefreq>
-  {#<lastmod>{{page.lastmod}}</lastmod>#}
+  <lastmod>{{page | lastmod}}</lastmod>
   </url>
   {{- loop(page.children|sort(attribute='path')) }}
   {%- endfor %}

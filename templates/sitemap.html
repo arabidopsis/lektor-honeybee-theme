@@ -7,7 +7,7 @@
   </div>
 <ul class="sitemap">
   {% for page in [site.root] if page.record_label recursive %}
-  <li><a href="{{ page|url }}">{{ page.record_label }}</a>
+  <li><a href="{{ page|url(absolute=True) }}">{{ page.record_label }}</a>
     {% if page.children %}
       <ul>{{ loop(page.children|sort(attribute='path')) }}</ul>
     {% endif %}

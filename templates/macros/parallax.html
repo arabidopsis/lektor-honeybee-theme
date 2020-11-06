@@ -1,15 +1,13 @@
 {% macro parallax(item) %}
-{% if item and item.attachments.images %}
 {% set img = item.attachments.images.first() %}
 <div class="parallax-window w-100 d-flex mt-3" style="background-image:url({{img | url}})">
   <div class="container">
     <blockquote class="blockquote p-3 mt-4">
       <p>&ldquo;{{item.title}}&rdquo;</p>
       {% if item.author %}
-      <footer class="blockquote-footer"><cite title="Author">{{item.author}}</cite></footer>
+      <footer><cite title="Author">{{item.author}}</cite></footer>
       {% endif %}
     </blockquote>
   </div>
 </div>
-{% endif %}
 {% endmacro %}
