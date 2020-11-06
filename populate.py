@@ -32,6 +32,12 @@ R = {
 }
 
 
+S = re.compile(r'\s+')
+
+# see lektor/lektor/utils.py:is_valid_id
+def to_valid_id(name):
+    return S.sub('-',name.strip())
+
 def find_images(todir):
     imgs = os.listdir(todir)
     for j in imgs:
@@ -49,7 +55,9 @@ def image_getter():
     def get_image(todir):
         c = random.choice(all_images)
         _, fname = os.path.split(c)
-        shutil.copy(join(pics, c), join(todir, fname))
+        # so lektor doesn't like spaces
+        tgt = to_valid_id(fname)
+        shutil.copy(join(pics, c), join(todir, tgt))
         with open(join(todir, fname + ".lr"), "w") as fp:
             print(f"description: {lorem.get_sentence()}", file=fp)
 
