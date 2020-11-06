@@ -36,7 +36,10 @@ S = re.compile(r'\s+')
 
 # see lektor/lektor/utils.py:is_valid_id
 def to_valid_id(name):
-    return S.sub('-',name.strip())
+    ret = S.sub('-',name.strip())
+    if ret.startswith('.'):
+        ret = ret.rstrip('.')
+    return ret
 
 def find_images(todir):
     imgs = os.listdir(todir)
