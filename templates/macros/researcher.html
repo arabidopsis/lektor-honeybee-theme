@@ -3,7 +3,7 @@
   <a href="{{person|url}}" style="margin:0 auto;">
   {% set i = person.attachments.images.first() %}
     {% if i %}
-    <img class="card-img-top rounded-circle" style="height:{{imgsize}}px;width:{{imgsize}}px"
+    <img class="card-img-top rounded-circle filter-bw" style="height:{{imgsize}}px;width:{{imgsize}}px"
         src="{{i.thumbnail(height=imgsize,width=imgsize, mode='crop')|url}}"
         alt="{{i.description}}"> 
     {% endif %}

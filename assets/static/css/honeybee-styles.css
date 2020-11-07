@@ -31,6 +31,7 @@ header {
   border-bottom: 1px var(--highlight-color) solid;
   position: relative;
 }
+
 header .logo {
   position: absolute;
   right: .5em;
@@ -91,6 +92,13 @@ footer {
   background-position:center;
   overflow: hidden;
 }
+
+.parallax-window blockquote {
+  color: gray;
+  font-size:1.5em;
+  background-color: rgba(230, 230, 230, .5);
+}
+
 @media (max-width:  576px) {
     .parallax-window {
         background-attachment: scroll;
@@ -101,21 +109,16 @@ footer {
         overflow-y: hidden;
     }
 }
-.parallax-window blockquote {
-  color: gray;
-  font-size:1.5em;
-  background-color: rgba(230, 230, 230, .6);
-}
 
 /* from https://github.com/GianlucaGuarini/jQuery.BlackAndWhite */
-img.card-img-top {
+img.filter-bw {
     filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
     filter: gray; /* IE6-9 */
     -webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
     transition: 0.3s ease-in;
 }
 
-img.card-img-top:hover {
+img.filter-bw:hover {
     filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
     -webkit-filter: grayscale(0%);
 }
