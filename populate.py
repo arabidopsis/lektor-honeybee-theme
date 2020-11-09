@@ -1,13 +1,18 @@
 import os
 from os.path import join
+import shutil
+import sys
+import shutil
 import random
 from datetime import datetime, timedelta
 import re
+
 import click
 from lektor.databags import load_databag
 from lektor.utils import slugify
 import lorem
-import shutil
+from lektor.imagetools import (ThumbnailMode,compute_dimensions,
+    get_quality, get_image_info,portable_popen, find_imagemagick)
 
 
 def multi_select(choices):
@@ -51,7 +56,7 @@ def find_images(todir):
             yield from find_images(f)
 
 
-def image_getter():
+def image_getter(width):
     pics = "/home/ianc/Pictures"
     all_images = list(find_images(pics))
 
@@ -60,8 +65,9 @@ def image_getter():
         _, fname = os.path.split(c)
         # so lektor doesn't like spaces
         tgt = to_valid_id(fname)
-        shutil.copy(join(pics, c), join(todir, tgt))
-        with open(join(todir, fname + ".lr"), "w") as fp:
+        src, dst = join(pics, c), join(todir, tgt)
+        process_image(src, dst, width=width)
+        with open(join(todir, tgt + ".lr"), "w") as fp:
             print(f"description: {lorem.get_sentence()}", file=fp)
 
     return get_image
@@ -81,17 +87,22 @@ def load_full_model(inifile):
     return db
 
 
-@click.command()
+@click.group()
+def cli():
+    pass
+
+@cli.command()
 @click.option("-t", "--target", help="target subdirectory of content")
 @click.option("-n", "--niter", default=5, help="number of entries")
+@click.option("-w", "--width", default=400, help="max width of dst image")
 @click.argument("model")
-def populate(model, target, niter):
+def populate(model, target, niter, width):
     """Create some random `contents.lr` files from a model file."""
     db = load_full_model(model)
 
     add_image = lambda d: None
     if target:
-        add_image = image_getter()
+        add_image = image_getter(width)
 
     def gen():
         entry = {}
@@ -129,5 +140,92 @@ def populate(model, target, niter):
             print(entry)
 
 
+
+def process_image(
+    source_image,
+    dst_filename,
+    width=None,
+    height=None,
+    mode=ThumbnailMode.FIT,
+    quality=None,
+    upscale=False
+):
+    """Build image from source image, optionally compressing and resizing.
+
+    "source_image" is the absolute path of the source in the content directory,
+    "dst_filename" is the absolute path of the target in the output directory.
+    """
+
+    im = find_imagemagick()
+
+    with open(source_image, "rb") as f:
+        format, source_width, source_height = get_image_info(f)
+    if format is None:
+        raise RuntimeError("Cannot process unknown images")
+
+    if mode == ThumbnailMode.FIT:
+        computed_width, computed_height = compute_dimensions(
+            width, height, source_width, source_height
+        )
+    else:
+        computed_width, computed_height = width, height
+    if not upscale and mode == ThumbnailMode.FIT and (
+        (width is not None and width > source_width) or
+        (height is not None and height > source_height)
+        ):
+        click.secho(f"{source_image} smaller than {width or ''}x{height or ''} copying..", fg="blue")
+        shutil.copy(source_image, dst_filename)
+        return
+
+    if quality is None:
+        quality = get_quality(source_image)
+
+    resize_key = ""
+    if width is not None:
+        resize_key += str(width)
+    if height is not None:
+        resize_key += "x" + str(height)
+
+    if mode == ThumbnailMode.STRETCH:
+        resize_key += "!"
+
+    cmdline = [im, source_image, "-auto-orient"]
+    if mode == ThumbnailMode.CROP:
+        cmdline += [
+            "-resize",
+            resize_key + "^",
+            "-gravity",
+            "Center",
+            "-extent",
+            resize_key,
+        ]
+    else:
+        cmdline += ["-resize", resize_key]
+
+    cmdline += ["-strip", "-colorspace", "sRGB"]
+    cmdline += ["-quality", str(quality), dst_filename]
+
+    portable_popen(cmdline).wait()
+    return computed_width, computed_height
+
+@cli.command()
+@click.option("-w", "--width", default=400, help="max width of dst image")
+@click.option("-u", "--upscale", is_flag=True, help="upscale images")
+@click.argument("content")
+def resize(width, content, upscale):
+    """Resize all images in a content directory."""
+    for directory, _, files in os.walk(content):
+        for f in files:
+            if not f.lower().endswith(('.jpeg','.jpg','.png', '.gif')):
+                continue
+            b, e = os.path.splitext(f)
+            dst = b + '-resized' + e
+            dst = os.path.join(directory, dst)
+            src = os.path.join(directory, f)
+            # swap
+            os.rename(src, dst)
+            process_image(dst, src, width=width, upscale=upscale)
+            os.unlink(dst)
+
 if __name__ == "__main__":
-    populate()  # pylint: disable=no-value-for-parameter
+    cli()  # pylint: disable=no-value-for-parameter
