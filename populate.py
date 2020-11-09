@@ -170,12 +170,12 @@ def process_image(
     else:
         computed_width, computed_height = width, height
     if not upscale and mode == ThumbnailMode.FIT and (
-        (width is not None and width > source_width) or
-        (height is not None and height > source_height)
+        (width is not None and width >= source_width) or
+        (height is not None and height >= source_height)
         ):
         click.secho(f"{source_image} smaller than {width or ''}x{height or ''} copying..", fg="blue")
         shutil.copy(source_image, dst_filename)
-        return
+        return computed_width, computed_height, source_width, source_height
 
     if quality is None:
         quality = get_quality(source_image)
@@ -206,7 +206,7 @@ def process_image(
     cmdline += ["-quality", str(quality), dst_filename]
 
     portable_popen(cmdline).wait()
-    return computed_width, computed_height
+    return computed_width, computed_height, source_width, source_height
 
 @cli.command()
 @click.option("-w", "--width", default=400, help="max width of dst image")
@@ -224,8 +224,9 @@ def resize(width, content, upscale):
             src = os.path.join(directory, f)
             # swap
             os.rename(src, dst)
-            process_image(dst, src, width=width, upscale=upscale)
+            w, h, ow, oh = process_image(dst, src, width=width, upscale=upscale)
             os.unlink(dst)
+            click.secho(f"{src}: {ow}x{oh} => {w}x{h}", fg="green")
 
 if __name__ == "__main__":
     cli()  # pylint: disable=no-value-for-parameter
