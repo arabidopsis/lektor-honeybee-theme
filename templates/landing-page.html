@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
-{% from "macros/vignettes.html" import vignettes %}
-{% from "macros/carousel.html" import carousel %}
-{% from "macros/show-item.html" import show_item %}
-{% from "macros/parallax.html" import parallax %}
+{%- from "macros/vignettes.html" import vignettes -%}
+{%- from "macros/carousel.html" import carousel_page -%}
+{%- from "macros/show-item.html" import show_item -%}
+{%- from "macros/parallax.html" import parallax -%}
 {% block body %}
 <div class="container">
   <div class="separator-heading">
@@ -13,6 +13,9 @@
   </div>
 </div>
 <div class="container">
+{% for i in this.attachments.images %}
+  <img src="{{i|url}}" style="width:200px"/>
+{% endfor %}
 <h1>this.children</h1>
 {% for v in this.children %}
     {{ show_item(v) }}
@@ -35,6 +38,6 @@
 <hr>
 {{ vignettes(site.get('/extras/vignettes'))}}
 <hr>
-{{ carousel(site.get('/extras/highlights').attachments.images)}}
+{{ carousel_page(site.get('/extras/highlights'))}}
 </div>
 {% endblock %}

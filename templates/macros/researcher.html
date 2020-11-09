@@ -2,19 +2,23 @@
 <div class="card border-0 mb-2" style="min-width:{{imgsize}}px">
   <a href="{{person|url}}" style="margin:0 auto;">
   {% set i = person.attachments.images.first() %}
+  <img class="card-img-top rounded-circle filter-bw" style="height:{{imgsize}}px;width:{{imgsize}}px"
     {% if i %}
-    <img class="card-img-top rounded-circle filter-bw" style="height:{{imgsize}}px;width:{{imgsize}}px"
         src="{{i.thumbnail(height=imgsize,width=imgsize, mode='crop')|url}}"
-        alt="{{i.description}}"> 
-    {% endif %}
+        alt="{{i.description}}"
+    {%- else -%}
+        src="{{'/static/img/Person.png' | asseturl}}"
+        alt="{{ person.name }}"
+    {%- endif -%}
+  />
   </a>
   <div class="card-body">
     <h4 class="card-title">Dr {{person.name}}</h4>
     <p class="card-text">
     {% if full %}
     <div class="markdown">{{ person.body }}</div>
-    {%else%}
-    {{ person.description or i.description }}
+    {% else %}
+    <div class="markdown">{{ person.body_short }}</div>
     {% endif %}
     </p>
   </div>

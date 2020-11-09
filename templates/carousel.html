@@ -5,6 +5,7 @@
 {% block body %}
   <h3>{{ this.title }}</h3>
   <div class="markdown">{{ this.body }}</div>
-  {{ carousel(this.attachments.images) }}
+  {% set slides = this.attachments.images|selectattr("description", "in", this.slideshow) %}
+  {{ carousel(slides) }}
 
 {% endblock %}

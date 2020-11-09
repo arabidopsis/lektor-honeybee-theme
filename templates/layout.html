@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{%- from "macros/header_image.html" import header -%}
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -24,7 +25,8 @@
     {% include "partials/cdn-css.html" %}
 
     <link rel="stylesheet" type="text/css" href="{{'/static/css/honeybee-styles.css' | asseturl}}" />
-    {% set bootstrap =  config.THEME_SETTINGS.bootstrap %}
+    
+    {% set bootstrap = config.THEME_SETTINGS.bootstrap %}
     {% if bootstrap %}
     <link rel="stylesheet" type="text/css" href="{{('/static/css/' ~ bootstrap) | asseturl}}" />
     {% endif %}
@@ -51,7 +53,8 @@
             flex-shrink: 0;
         }
         body > .content > header {
-            background-image: url({{ site.get('/').attachments.images.first().thumbnail(width=1600) | url }});
+
+            background-image: url({{ header(1600)}});
         }
         
         .nav-item.active > .nav-link { font-weight: bold; }
