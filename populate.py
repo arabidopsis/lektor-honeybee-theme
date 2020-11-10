@@ -11,8 +11,14 @@ import click
 from lektor.databags import load_databag
 from lektor.utils import slugify
 import lorem
-from lektor.imagetools import (ThumbnailMode,compute_dimensions,
-    get_quality, get_image_info,portable_popen, find_imagemagick)
+from lektor.imagetools import (
+    ThumbnailMode,
+    compute_dimensions,
+    get_quality,
+    get_image_info,
+    portable_popen,
+    find_imagemagick,
+)
 
 
 def multi_select(choices):
@@ -37,14 +43,15 @@ R = {
 }
 
 
-S = re.compile(r'\s+')
+S = re.compile(r"\s+")
 
 # see lektor/lektor/utils.py:is_valid_id
 def to_valid_id(name):
-    ret = S.sub('-',name.strip())
-    if ret.startswith('.'):
-        ret = ret.rstrip('.')
+    ret = S.sub("-", name.strip())
+    if ret.startswith("."):
+        ret = ret.rstrip(".")
     return ret
+
 
 def find_images(todir):
     imgs = os.listdir(todir)
@@ -90,6 +97,7 @@ def load_full_model(inifile):
 @click.group()
 def cli():
     pass
+
 
 @cli.command()
 @click.option("-t", "--target", help="target subdirectory of content")
@@ -140,7 +148,6 @@ def populate(model, target, niter, width):
             print(entry)
 
 
-
 def process_image(
     source_image,
     dst_filename,
@@ -148,7 +155,8 @@ def process_image(
     height=None,
     mode=ThumbnailMode.FIT,
     quality=None,
-    upscale=False
+    upscale=False,
+    quiet=False,
 ):
     """Build image from source image, optionally compressing and resizing.
 
@@ -169,11 +177,19 @@ def process_image(
         )
     else:
         computed_width, computed_height = width, height
-    if not upscale and mode == ThumbnailMode.FIT and (
-        (width is not None and width >= source_width) or
-        (height is not None and height >= source_height)
-        ):
-        click.secho(f"{source_image} smaller than {width or ''}x{height or ''} copying..", fg="blue")
+    if (
+        not upscale
+        and mode == ThumbnailMode.FIT
+        and (
+            (width is not None and width >= source_width)
+            or (height is not None and height >= source_height)
+        )
+    ):
+        if not quiet:
+            click.secho(
+                f"{source_image} smaller than {width or ''}x{height or ''} copying..",
+                fg="blue",
+            )
         shutil.copy(source_image, dst_filename)
         return computed_width, computed_height, source_width, source_height
 
@@ -208,25 +224,31 @@ def process_image(
     portable_popen(cmdline).wait()
     return computed_width, computed_height, source_width, source_height
 
+
 @cli.command()
 @click.option("-w", "--width", default=400, help="max width of dst image")
 @click.option("-u", "--upscale", is_flag=True, help="upscale images")
+@click.option("-q", "--quiet", is_flag=True, help="only log changes")
 @click.argument("content")
-def resize(width, content, upscale):
+def resize(width, content, upscale, quiet):
     """Resize all images in a content directory."""
     for directory, _, files in os.walk(content):
         for f in files:
-            if not f.lower().endswith(('.jpeg','.jpg','.png', '.gif')):
+            if not f.lower().endswith((".jpeg", ".jpg", ".png", ".gif")):
                 continue
             b, e = os.path.splitext(f)
-            dst = b + '-resized' + e
+            dst = b + "-resized" + e
             dst = os.path.join(directory, dst)
             src = os.path.join(directory, f)
             # swap
             os.rename(src, dst)
-            w, h, ow, oh = process_image(dst, src, width=width, upscale=upscale)
+            w, h, ow, oh = process_image(
+                dst, src, width=width, upscale=upscale, quiet=quiet
+            )
             os.unlink(dst)
-            click.secho(f"{src}: {ow}x{oh} => {w}x{h}", fg="green")
+            if not quiet or ow != w or oh != h:
+                click.secho(f"{src}: {ow}x{oh} => {w}x{h}", fg="green")
+
 
 if __name__ == "__main__":
     cli()  # pylint: disable=no-value-for-parameter
