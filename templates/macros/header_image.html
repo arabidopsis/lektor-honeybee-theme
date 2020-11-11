@@ -1,4 +1,9 @@
 {%- macro header(width) -%}
-{%- set s = site.get('/') -%}
-{{- s.attachments.images.filter(F.description == s.header).first().thumbnail(width) | url -}}
+{%- set s = site.get('/') %}
+{%- set img = s.attachments.images.filter(F.description == s.header).first() -%}
+{%- if img -%}
+{{- img.thumbnail(width) | url -}}
+{%- else -%}
+{{- s.attachments.images.first().thumbnail(width) | url -}}
+{%- endif -%}
 {%- endmacro -%}
