@@ -12,6 +12,7 @@
    {{this.body}}
   </div>
 </div>
+{#
 <div class="container">
 {% for i in this.attachments.images %}
   <img src="{{i|url}}" style="width:200px"/>
@@ -33,6 +34,7 @@
 {% endfor %}
 <hr>
 </div>
+#}
 {{ parallax(site.get('/extras/parallax-1'))}}
 <div class="container">
 <hr>
