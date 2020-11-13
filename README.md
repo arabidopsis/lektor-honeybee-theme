@@ -1,4 +1,7 @@
-# honeybee
+# honeybee theme
+
+A lektor theme for [Honey Bee Health](https://honeybeehealthresearch.org/)
+Content is currently [Here](https://github.com/arabidopsis/honeybeehealthresearch.org)
 
 This theme requires a [Lektor plugin](https://github.com/arabidopsis/lektor-shortcodes).
 
@@ -42,7 +45,7 @@ changefreq = monthly
 theme = sunset
 # is this theme a dark theme i.e. light text on dark background
 is_dark_theme = false
-# bootstrap = {some bootstrap.css}
+# bootstrap = {some-bootstrap.css}
 twitter = twitter handle for site
 facebook = facebook page for site
 ```
@@ -52,5 +55,4 @@ See [here](https://themesguide.github.io/top-hat/dist/) or, build your own
 at [https://themestr.app/](https://themestr.app/) or see [http://themes.guide/](http://themes.guide/#freebies).
 
 If you have built your own place it in `/assets/static/css/{mytheme.css}` and
-add a `bootstrap = mytheme.css` to the the `[theme_settings]`. (Don't bother to set `theme` in
-this case)
+add a `bootstrap = mytheme.css` to the the `[theme_settings]`. (Don't bother to set `theme` in this case)

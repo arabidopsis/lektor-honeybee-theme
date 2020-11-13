@@ -54,7 +54,7 @@
         }
         body > .content > header {
 
-            background-image: url({{ header(1600)}});
+            background-image: url({{ header(1600) }});
         }
         
         .nav-item.active > .nav-link { font-weight: bold; }
@@ -71,10 +71,6 @@
     </style>
     {% block css %}{% endblock css %}
 
-    <script type="text/javascript">
-    // some modules expect this global object
-    window.SubaCrop = { };
-    </script>
     {% block header_js %}{% endblock %}
     {# PEB greens clockwise darkest to lightest #768d28 #a6bd28 #becf5a #dee5a2 #}
 
@@ -88,6 +84,7 @@
 {% block header %}
     {% include "partials/breadcrumbs.html" %}
     {% include "partials/header.html" %}
+
 {% endblock header %}
 <main id="main-content">
 {% block body %}{% endblock %}
