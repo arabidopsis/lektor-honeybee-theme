@@ -1,7 +1,8 @@
 {# see https://developer.twitter.com/en/docs/twitter-api/v1/tweets/post-and-engage/api-reference/get-statuses-oembed #}
 
-{# most usefull are: align={left,right,center,none} theme={light,dark} #}
+{# most useful are: align={left,right,center,none} theme={light,dark} #}
 {% set is_dark_theme = config.THEME_SETTINGS.is_dark_theme == 'true' %}
 {% set url = 'https://twitter.com/' + args[0] %}
-{% set params = kwargs | mergedict(url=url,dnt='true', theme='dark' if is_dark_theme else 'light') %}
+{% set params = kwargs | mergedict(url=url, dnt='true', omit_script='true', theme='dark' if is_dark_theme else 'light') %}
 {{json_request('https://publish.twitter.com/oembed', params=params).html | safe}}
+{{this | add_script('https://platform.twitter.com/widgets.js', async=True)}}
