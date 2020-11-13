@@ -30,13 +30,19 @@ _template: 404.html
 
 ## theme_settings
 
+This theme understands a few
+values in the `[theme_settings]` of
+your config file.
+
 ```ini
 [theme_settings]
 # sitemap.xml changefreq
 changefreq = monthly
 # default is no theme
 theme = sunset
-# bootstrap = {some bootstrap.css file}
+# is this theme a dark theme i.e. light text on dark background
+is_dark_theme = false
+# bootstrap = {some bootstrap.css}
 twitter = twitter handle for site
 facebook = facebook page for site
 ```
