@@ -16,19 +16,17 @@
 {% set frontpage = site.get('/news').children.filter(F.tags.contains('frontpage')).first() %}
 {% if frontpage %}
 <div class="container">
-  {% if frontpage %}
     <div class="separator-heading">
       <h2>Current Highlight</h2>
     </div>
     {{ news_item(frontpage, imgsize=400, full=True) }}
-  {% endif %}
 </div>
 {% endif %}
-{{ parallax(site.get('/extras/parallax-1'))}}
+{{ parallax(site.get('/extras/parallax'))}}
 <div class="container">
-<hr>
-{{ vignettes(site.get('/extras/vignettes'))}}
-<hr>
-{{ carousel_page(site.get('/extras/highlights'))}}
+  <hr>
+  {{ vignettes(site.get('/extras/vignettes'))}}
+  <hr>
+  {{ carousel_page(site.get('/extras/highlights'))}}
 </div>
 {% endblock %}

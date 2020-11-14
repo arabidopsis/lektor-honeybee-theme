@@ -7,9 +7,9 @@
   clear: both;
 }
 
-body {
+/* body {
   font-family: Raleway!important;
-}
+} */
 body, button, input, select, textarea {
     font-size: 1.1em;
     line-height: 1.6em;
@@ -155,7 +155,7 @@ img.filter-xbw:hover {
 }
 
 
-i.feature-circle, span.feature-circle {
+i.feature.fas, span.feature.fas {
   width: 2em;
   height: 2em;
   font-size: 3em;
