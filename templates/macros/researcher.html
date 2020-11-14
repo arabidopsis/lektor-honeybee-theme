@@ -1,5 +1,5 @@
 {% macro researcher(person,imgsize=100, full=False) %}
-<div class="card border-0 mb-2" style="min-width:{{imgsize}}px">
+<div class="card border-0 mb-5" style="min-width:{{imgsize}}px">
   <a href="{{person|url}}" style="margin:0 auto;">
   {% set i = person.attachments.images.first() %}
   <img class="card-img-top rounded-circle filter-xbw" style="height:{{imgsize}}px;width:{{imgsize}}px"

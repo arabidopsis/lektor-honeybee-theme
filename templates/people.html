@@ -13,7 +13,7 @@
   </div>
   <div class="card-deck pt-5 justify-content-around">
       {% for p in this.children %}
-        {{ researcher(p|readmore(split='', link="See Full Bio: btn btn-default"), imgsize=200) }}
+        {{ researcher(p|readmore(split='---', link="See Full Bio: btn btn-outline-primary"), imgsize=200) }}
       {% endfor %}
   </div>
 </div>
