@@ -1,15 +1,18 @@
 
 {% set is_dark_theme = config.THEME_SETTINGS.is_dark_theme == 'true' %}
+{% set about = site.get('/about') %}
 <footer class="bg-{{'dark' if is_dark_theme else 'light'}} text-{{'light' if is_dark_theme else 'dark'}} mt-3">
 
   <div class="container">
     <div class="justify-content-center">
 
         <ul class="list-inline text-center pt-1">
+        {% if about %}
           <li class="list-inline-item">
-            <a href="/about"> About <span class="fas fa-book"></span> </a>
+            <a href="{{about | url }}"> About <span class="fas fa-book"></span> </a>
           </li>
           <li class="list-inline-item">|</li>
+        {% endif %}
           <li class="list-inline-item">
             <a href="https://plantenergy.edu.au" target="_blank">© 2020 Plant Energy Biology</a>
           </li>
@@ -18,7 +21,6 @@
 
 
     <div class="logos row d-none d-lg-flex justify-content-around align-self-center">
-
 
         <a class="col-3" href="https://uwa.edu.au" target="_blank">
             <img src="{{'/static/img/UWA-Full-Hor-CMYK-opt.svg'|asseturl }}"

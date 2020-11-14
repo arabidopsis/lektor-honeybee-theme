@@ -35,10 +35,14 @@ _template: 404.html
 
 This theme understands a few
 values in the `[theme_settings]` of
-your config file.
+your project file.
 
 ```ini
 [theme_settings]
+# google analytics
+ua_google = UA-XXXXX-Y
+# text to overlay header
+# frontispiece = 'text for header'
 # sitemap.xml changefreq
 changefreq = monthly
 # default is no theme

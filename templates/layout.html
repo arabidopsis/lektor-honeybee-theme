@@ -7,7 +7,7 @@
     <meta http-equiv="x-dns-prefetch-control" content="on">
 
     <title>{% block title %}Bee Health{% endblock %}</title>
-
+    {% include "partials/analytics.html" %}
     {% include "partials/meta.html" %}
 
     {% block meta %}{% endblock meta %}
@@ -19,7 +19,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400|Roboto" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet">
+    {#<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet">#}
  
   
     {% include "partials/cdn-css.html" %}
@@ -98,6 +98,7 @@
 {% include "partials/cdn-js.html" %}
 
 {{ this|gen_js() }}
+
 {% block js %}{% endblock js %}
 </body>
 </html>

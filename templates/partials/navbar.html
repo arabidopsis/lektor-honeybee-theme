@@ -1,7 +1,8 @@
-{% set bg = 'dark' if config.THEME_SETTINGS.is_dark_theme == 'true' else 'light' %}
+{% set is_dark = config.THEME_SETTINGS.is_dark_theme == 'true' %}
+{% set bg = 'dark' if is_dark else 'light' %}
 <nav class="navbar navbar-default navbar-expand-lg sticky-top bg-{{bg}}">
     <a class="navbar-brand"  href="{{ '/'|url }}">
-    <img src="{{'/static/img/bee.svg'|asseturl}}" style="height:1.2em"/>
+    <img src="{{ ('/static/img/honeybeelogo' + ('-white' if is_dark else '') + '-opt.svg')|asseturl}}" style="height:1.2em"/>
     Bee Health</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
         data-target="#navbar-collapse-1"  
