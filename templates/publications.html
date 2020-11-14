@@ -7,13 +7,17 @@
     </div>
     <div class="markdown">{{ this.body }}</div>
     
-    <div class="separator-heading">
-      <h3>{{this.title}}</h3>
-    </div>
+    <hr/>
 
-    {% for pub in this.children %}
+    {% for pub in this.children.filter(F.date.false()) %}
       <div class="publication">
-      {{publication(pub, full=False)}}
+      {{publication(pub)}}
+      </div>
+      <hr/>
+    {% endfor %}
+    {% for pub in this.children.filter(F.date.true()) %}
+      <div class="publication">
+      {{publication(pub)}}
       </div>
       <hr/>
     {% endfor %}

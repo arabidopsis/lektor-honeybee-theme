@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% from "macros/news-item.html" import news_item %}
-{% block body %}
 
+{% block body %}
 <div class="container">
   <div class="card-deck pt-5 justify-content-around">
     {{ news_item(this, imgsize=400, full=True) }}

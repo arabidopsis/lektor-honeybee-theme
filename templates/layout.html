@@ -4,34 +4,32 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta http-equiv="x-dns-prefetch-control" content="on">
-
     <title>{% block title %}Bee Health{% endblock %}</title>
+    <link rel="shortcut icon" href="{{'/static/img/favicon.ico'| asseturl}}"/>
+
     {% include "partials/analytics.html" %}
     {% include "partials/meta.html" %}
-
     {% block meta %}{% endblock meta %}
-
+    
+    {#
+    <meta http-equiv="x-dns-prefetch-control" content="on">
     <link rel='dns-prefetch' href='//fonts.googleapis.com' />
-
     <link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
-    <link rel="shortcut icon" href="{{'/static/img/favicon.ico'| asseturl}}"/>
+
 
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400|Roboto" rel="stylesheet">
-    {#<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet">#}
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet">
+    #}
  
-  
     {% include "partials/cdn-css.html" %}
-
-    <link rel="stylesheet" type="text/css" href="{{'/static/css/honeybee-styles.css' | asseturl}}" />
+    {% block cdn_css %}{% endblock %}
     
     {% set bootstrap = config.THEME_SETTINGS.bootstrap %}
     {% if bootstrap %}
     <link rel="stylesheet" type="text/css" href="{{('/static/css/' ~ bootstrap) | asseturl}}" />
     {% endif %}
-
-    {% block cdn_css %}{% endblock %}
+    <link rel="stylesheet" type="text/css" href="{{'/static/css/honeybee-styles.css' | asseturl}}" />
 
     <style>
         :root {
@@ -84,8 +82,8 @@
 {% block header %}
     {% include "partials/breadcrumbs.html" %}
     {% include "partials/header.html" %}
-
 {% endblock header %}
+
 <main id="main-content">
 {% block body %}{% endblock %}
 </main>

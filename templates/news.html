@@ -10,10 +10,17 @@
   <div class="markdown">
    {{this.body}}
   </div>
-
-  <div class="separator-heading">
-    <h2>Latest News</h2>
-  </div>
+  {% set frontpage = this.children.filter(F.tags.contains('frontpage')).first() %}
+  {% if frontpage %}
+    <div class="separator-heading">
+      <h2>Current Highlight</h2>
+    </div>
+    {{ news_item(frontpage, imgsize=400, full=True) }}
+  {% endif %}
+  <hr/>
+  {% if this.pagination.pages > 1 %}
+    {{ render_pagination(this.pagination) }}
+  {% endif %}
   <div class="card-deck pt-5 justify-content-around">
       {% for p in this.pagination.items %}
         {{ news_item(p, imgsize=200) }}
@@ -22,7 +29,6 @@
   {% if this.pagination.pages > 1 %}
     {{ render_pagination(this.pagination) }}
   {% endif %}
-
 
 </div>
 {% endblock %}

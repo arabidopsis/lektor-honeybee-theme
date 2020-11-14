@@ -1,12 +1,12 @@
 {% macro news_item(this, imgsize=100, full=False) %}
 <div class="card border-0 mb-2" style="min-width:{{imgsize}}px">
   
-  <a href="{{this|url}}" style="margin:0 auto; float:right;">
+  <a href="{{this|url}}" class="mx-auto">
   {% set i = this.attachments.images.first() %}
     {% if i %}
-    <img class="card-img-top filter-bw" style="height:{{imgsize}}px;width:{{imgsize}}px"
+    <img class="card-img-top filter-xbw" style="height:{{imgsize}}px;width:{{imgsize}}px"
         src="{{i.thumbnail(height=imgsize,width=imgsize, mode='crop')|url}}"
-        alt="{{i.title}}"> 
+        alt="{{i.description}}"> 
     {% endif %}
   </a>
   <div class="card-body">
@@ -19,6 +19,7 @@
     {% endif %}
     </p>
   </div>
+
   {% if full %}
   <footer>Follow us on:
     <a href="/{{config.THEME_SETTINGS.twitter}}" title="Twitter"><span class="fab fa-twitter"></span></a>

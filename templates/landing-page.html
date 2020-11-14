@@ -3,6 +3,7 @@
 {%- from "macros/carousel.html" import carousel_page -%}
 {%- from "macros/show-item.html" import show_item -%}
 {%- from "macros/parallax.html" import parallax -%}
+{%- from "macros/news-item.html" import news_item -%}
 {% block body %}
 <div class="container">
   <div class="separator-heading">
@@ -12,29 +13,17 @@
    {{this.body}}
   </div>
 </div>
-{#
+{% set frontpage = site.get('/news').children.filter(F.tags.contains('frontpage')).first() %}
+{% if frontpage %}
 <div class="container">
-{% for i in this.attachments.images %}
-  <img src="{{i|url}}" style="width:200px"/>
-{% endfor %}
-<h1>this.children</h1>
-{% for v in this.children %}
-    {{ show_item(v) }}
-    <br/>
-{% endfor %}
-<h1>site.query('/')</h1>
-{% for v in site.query('/') %}
-    {{ show_item(v) }}
-    <br/>
-{% endfor %}
-<h1>site.query('/vignettes')</h1>
-{% for v in site.query('/vignettes') %}
-    {{ show_item(v) }}
-    <br/>
-{% endfor %}
-<hr>
+  {% if frontpage %}
+    <div class="separator-heading">
+      <h2>Current Highlight</h2>
+    </div>
+    {{ news_item(frontpage, imgsize=400, full=True) }}
+  {% endif %}
 </div>
-#}
+{% endif %}
 {{ parallax(site.get('/extras/parallax-1'))}}
 <div class="container">
 <hr>
