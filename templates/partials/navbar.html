@@ -15,7 +15,7 @@
         <li class="nav-item{% if this.path == '/' %} active{%endif%}">
           <a class="nav-link" href="{{ '/' |url }}">Home</a>
         </li>
-        {% for page in site.query('/') %}
+        {% for page in site.query('/').order_by('title') %}
           {% if page.path != '/404.html' %}
           <li class="nav-item{% if this.url_path == page.url_path %} active{%endif%}">
             <a class="nav-link" href="{{page | url }}">{{ page.path | trim('/') | split('-') | join(' ') | title }}</a>
