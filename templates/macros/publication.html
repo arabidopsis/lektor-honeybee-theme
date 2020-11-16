@@ -1,7 +1,7 @@
 {% macro publication(pub) %}
     {% if pub.date %}{{pub.date}}{% else %}in preparation{% endif %}: 
-    <span class="pub-title">"{{pub.title}}"</span>
-    <span class="pub-authors">{{pub.authors}}</span>
-    <span class="pub-journal">{{pub.journal}} {% if pub.date %}({{pub.date.year}}){% endif %}</span>
+    &ldquo;<span class="pub-title">{{pub.title}}</span>&rdquo;
+    <span class="pub-authors text-success">{{pub.authors}}</span>
+    <span class="pub-journal text-info">{{pub.journal}} {% if pub.date %}({{pub.date.year}}){% endif %}</span>
     {%if pub.pubmed %}<a class="pub-pubmed" target="_blank" href="https://pubmed.ncbi.nlm.nih.gov/{{pub.pubmed}}/">PubMed: {{pub.pubmed}}</a>{% endif %}
 {% endmacro %}

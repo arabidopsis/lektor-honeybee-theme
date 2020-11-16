@@ -1,7 +1,8 @@
 
 
 {% macro carousel_page( page , height=480) %}
-{% set slides = page.attachments.images|selectattr("description", "in", page.slideshow) %}
+{% set slides = page.attachments.images.filter(F._id.isin(page.slideshow)).all() %}
+{# set slides = page.attachments.images|selectattr("description", "in", page.slideshow) #}
 {{carousel(slides, height=height)}}
 {% endmacro %}
 {% macro carousel(images, height=480) %}

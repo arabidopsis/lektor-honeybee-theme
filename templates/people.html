@@ -8,9 +8,6 @@
   <div class="markdown">
    {{this.body}}
   </div>
-  <div class="separator-heading">
-    <h2>Our World Class Researchers</h2>
-  </div>
   <div class="card-deck pt-5 justify-content-around">
       {% for p in this.children %}
         {{ researcher(p|readmore(split='---', link="See Full Bio: btn btn-outline-primary"), imgsize=200) }}
