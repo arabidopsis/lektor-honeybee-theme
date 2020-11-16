@@ -1,5 +1,6 @@
+{%- set g = site.get('/extras/globals') -%}
 <header class="d-flex justify-content-around align-items-center">
-      <h1 class="text-white">{{config.THEME_SETTINGS.frontispiece}}</h1>
+      <h1 style="color:{{g.headercolor or 'white'}}">{{g.headertext or ''}}</h1>
       <img class="logo" src="{{'/static/img/honeybeelogo-opt.svg'|asseturl }}"
             alt="logo" />
 </header>
