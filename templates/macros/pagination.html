@@ -4,21 +4,21 @@
 {% set page_iter = range(1, pagination.pages + 1) if all_pages else pagination.iter_pages(left_edge=1,left_current=1, right_current=2, right_edge=1) %}
 <nav arial-label="Page navigation">
   <ul class="pagination justify-content-center">
-    {% if pagination.has_prev %}
+    {%- if pagination.has_prev -%}
       <li class="page-item"><a class="page-link" href="{{ pagination.prev|url }}">&laquo; Previous</a></li>
-    {% else %}
+    {%- else -%}
       <li class="page-item disabled"><span class="page-link">&laquo; Previous</span></li>
-    {% endif %}
+    {%- endif -%}
     {% for p in page_iter %}
-        {% if p %} 
+        {%- if p -%} 
             {%- if p == pagination.page -%}
                 <li class="page-item disabled"><strong class="page-link" >{{ p }}</strong></li>
             {%- else -%}
                 <li class="page-item"><a class="page-link" href="{{ pagination.for_page(p)|url }}">{{ p }}</a></li>
             {%- endif -%}
-        {% else %}
+        {%- else -%}
             <li class="page-item disabled"><span class="page-link ellipsis" >...</span></li>
-        {% endif %}
+        {%- endif -%}
     {% endfor %}
     {% if pagination.has_next %}
       <li class="page-item"><a class="page-link" href="{{ pagination.next|url }}">Next &raquo;</a></li>

@@ -1,6 +1,6 @@
 {# Global site tag (gtag.js) - Google Analytics #}
-{% set ga = config.THEME_SETTINGS.ua_google %}
-{% if ga %}
+{%- set ga = config.THEME_SETTINGS.ua_google -%}
+{% if ga -%}
 <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 ga('create', '{{ga}}', 'auto');
@@ -8,4 +8,4 @@ ga('send', 'pageview');
 </script>
 {{this|add_script('https://www.google-analytics.com/analytics.js', async=True)}}
 {#<script async src='https://www.google-analytics.com/analytics.js'></script>#}
-{% endif %}
+{%- endif %}
