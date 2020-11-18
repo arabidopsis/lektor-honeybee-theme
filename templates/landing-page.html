@@ -22,11 +22,11 @@
     {{ news_item(frontpage, imgsize=400, full=True) }}
 </div>
 {% endif %}
-{{ parallax(site.get('/extras/parallax'))}}
-<div class="container">
+{% if this.fragments %}
+{% for blk in this.fragments.blocks %}
+  {{blk}}
   <hr/>
-  {{ vignettes(site.get('/extras/vignettes'))}}
-  <hr/>
-  {{ carousel_page(site.get('/extras/highlights'))}}
-</div>
+{% endfor %}
+{% endif %}
+
 {% endblock %}
