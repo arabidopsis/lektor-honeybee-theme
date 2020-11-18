@@ -1,7 +1,7 @@
 
-{% macro logos(g) %}
+{% macro logos(g, txt="Follow us on:") %}
   <div class="social-logos">
-  <span class="follow">Follow us on:</span>
+  <span class="follow">{{txt}}</span>
   {% if g.facebook %}
   <a href="https://www.facebook.com/{{g.facebook}}"
       target="_blank"><i style="color:#4267B2" class="fab fa-facebook" /></i>

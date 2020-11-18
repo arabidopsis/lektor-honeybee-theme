@@ -1,4 +1,5 @@
 {% macro researcher(person,imgsize=100, full=False) %}
+{%- from "macros/logos.html" import logos -%}
 <div class="card border-0 mb-5" style="min-width:{{imgsize}}px">
   <a href="{{person|url}}" style="margin:0 auto;">
   {% set i = person.attachments.images.first() %}
@@ -22,12 +23,8 @@
     {%- endif -%}
     </p>
   </div>
-  <footer>Follow me on
-    <a href="/{{person.name}}" title="Twitter"><span class="fab fa-twitter"></span></a>
-    <a href="/{{person.name}}" title="Facebook"><span class="fab fa-facebook"></span></a>
-    <a href="/{{person.name}}" title="Instagram"><span class="fab fa-instagram"></span></a>
-    <a href="/{{person.name}}" title="Snapchat"><span class="fab fa-snapchat"></span></a>
-    <a href="/{{person.name}}" title="Google+"><span class="fab fa-google-plus"></span></a>
-  </footer>
+  {%- set handles = person.twitter or person.instagram -%}
+
+  {%- if handles -%}<footer>{{logos(person, "Follow me on:")}}</footer>{%- endif -%}
 </div>
 {% endmacro %}

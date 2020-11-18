@@ -10,8 +10,8 @@
     integrity="sha256-f0GYLhy8XNjQJudq/FKiFeerQIzDs6eUNm+S+ZgffmA="
     crossorigin="anonymous" />
 #}
-{% set theme = config.THEME_SETTINGS.theme %}
-{% if theme %}
+{%- set theme = config.THEME_SETTINGS.theme -%}
+{% if theme -%}
 <link rel="stylesheet"
 href="https://themesguide.github.io/top-hat/dist/{{theme}}/theme.css" />
-{% endif %}
+{%- endif %}

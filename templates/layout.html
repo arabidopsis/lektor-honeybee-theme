@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {%- from "macros/header_image.html" import header -%}
 {%- set globals = site.get('/extras/globals') -%}
+{% set is_dark_theme = config.THEME_SETTINGS.is_dark_theme == 'true' %}
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -52,7 +53,6 @@
             flex-shrink: 0;
         }
         body > .content > header {
-
             background-image: url({{ header(1600) }});
         }
         
@@ -74,7 +74,7 @@
     {# PEB greens clockwise darkest to lightest #768d28 #a6bd28 #becf5a #dee5a2 #}
 
 </head>
-<body>
+<body class="{{'dark' if is_dark_theme else 'light'}}">
 <div class="content">
 {% block navbar %}
   {% include "partials/navbar.html" %}

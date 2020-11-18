@@ -1,8 +1,7 @@
 
 
-{% set is_dark_theme = config.THEME_SETTINGS.is_dark_theme == 'true' %}
-{% set about = site.get('/about') %}
-{% from "macros/logos.html" import logos %}
+{%- set about = site.get('/about') -%}
+{%- from "macros/logos.html" import logos -%}
 <footer class="bg-{{'dark' if is_dark_theme else 'light'}} text-{{'light' if is_dark_theme else 'dark'}} mt-3">
 
   <div class="container">
@@ -52,7 +51,7 @@
     <div class="text-center">
       <small>
         <a id="cc-license" rel="license" href="http://creativecommons.org/licenses/by/4.0/">
-              <img alt="Creative Commons License" style="border-width:0"
+              <img alt="Creative Commons License" style="border-width:0; height:20px"
                    src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
         </a>
         <br/>
