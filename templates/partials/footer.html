@@ -1,6 +1,8 @@
 
+
 {% set is_dark_theme = config.THEME_SETTINGS.is_dark_theme == 'true' %}
 {% set about = site.get('/about') %}
+{% from "macros/logos.html" import logos %}
 <footer class="bg-{{'dark' if is_dark_theme else 'light'}} text-{{'light' if is_dark_theme else 'dark'}} mt-3">
 
   <div class="container">
@@ -16,7 +18,12 @@
           <li class="list-inline-item">
             <a href="https://plantenergy.edu.au" target="_blank">© 2020 Plant Energy Biology</a>
           </li>
+          <li class="list-inline-item">|</li>
+          <li class="list-inline-item">
+              {{logos(globals)}}
+          </li>      
         </ul>
+    
     </div>
 
 

@@ -188,3 +188,35 @@ i.feature.fas, span.feature.fas {
   }
 
 }
+
+.social-logos {
+  vertical-align: middle;
+}
+.social-logos .follow {
+  padding-bottom: .2em;
+}
+.social-logos a {
+  text-decoration: none;
+  margin-left:.2em;
+}
+.social-logos a i.fab {
+  font-size: 1.2em;
+  transition: transform 1s ease-in-out;
+  filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2));
+}
+.social-logos a i.fab:hover {
+  transform: rotate(360deg)
+}
+.social-logos a i.fab.fa-instagram {
+  background-clip: text;
+  text-fill-color: transparent;
+  background-image: radial-gradient(circle farthest-corner at 
+  32% 106%, rgb(255, 225, 125) 0%, rgb(255, 205, 105) 10%,
+   rgb(250, 145, 55) 28%, rgb(235, 65, 65) 42%, transparent 82%), 
+   linear-gradient(135deg, rgb(35, 75, 215) 12%, rgb(195, 60, 190) 58%);
+   background-size: 100%;
+   -webkit-background-clip: text;
+   -moz-background-clip: text;
+   -webkit-text-fill-color: transparent; 
+   -moz-text-fill-color: transparent;
+}

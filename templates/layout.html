@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {%- from "macros/header_image.html" import header -%}
+{%- set globals = site.get('/extras/globals') -%}
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -33,7 +34,7 @@
 
     <style>
         :root {
-            --highlight-color: {{site.get('/extras/globals').highlight}};
+            --highlight-color: {{globals.highlight}};
         }
         body, html {
             height: 100%;

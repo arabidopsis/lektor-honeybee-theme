@@ -19,7 +19,7 @@
         {% for page in site.query('/').order_by('navbar, title') %}
           {% if page.path != '/404.html' %}
           <li class="nav-item{% if this.url_path == page.url_path %} active{%endif%}">
-            <a class="nav-link" href="{{page | url }}">{{ (page.navbar or page.path) | trim('/') | split('-') | join(' ') | title }}</a>
+            <a class="nav-link" href="{{page | url }}">{{ (page.navbar or page._slug) | trim('/') | split('-') | join(' ') | title }}</a>
           </li>
           {% endif %}
         {% endfor %}
