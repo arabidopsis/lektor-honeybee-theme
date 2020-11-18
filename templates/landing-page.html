@@ -15,7 +15,7 @@
 </div>
 {% set frontpage = site.get('/news').children.filter(F.tags.contains('frontpage')).first() %}
 {% if frontpage %}
-<div class="container">
+<div class="container w-75">
     <div class="separator-heading">
       <h2>Current Highlight</h2>
     </div>
