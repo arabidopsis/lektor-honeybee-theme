@@ -226,3 +226,7 @@ body.dark .social-logos a i.fab {
   -webkit-text-fill-color: transparent; 
   -moz-text-fill-color: transparent;
 }
+
+form.sending .message-sending { display: inline!important; }
+form.sent .message-sent { display: inline!important; }
+form.failed .message-failed { display: inline!important; }

@@ -1,0 +1,53 @@
+{%- set i = get_random_id() -%}
+
+<form id="form-{{i}}" method="{{method|default('POST')}}"
+  action="{{action}}" accept-charset="UTF-8" role="form" class="needs-validation {{args|join(' ')}}" novalidate>
+
+    <div class="form-group">
+      <label  for="name-{{i}}">Your Name:</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text"><i class="far fa-user"></i></div>
+        </div>
+        <input type="text" id="name-{{i}}" name="name" class="form-control" required placeholder=" " aria-labelledby="name-{{i}}"/>
+        <div class="invalid-feedback">
+          Please supply a name
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label  for="email-{{i}}">Email Address:</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">@</div>
+        </div>
+        <input type="email" id="email-{{i}}" name="email" class="form-control" required placeholder=" "  aria-labelledby="email-{{i}}"/>
+        <div class="invalid-feedback">
+          Email address is required
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="" for="message-{{i}}">Message:</label>
+      <textarea id="message-{{i}}" name="message" 
+        class="form-control" required aria-labelledby="message-{{i}}"></textarea>
+      <div class="invalid-feedback">
+        Please send a message
+      </div>
+    </div>
+    <button class="btn btn-primary mr-1" type="submit">Send</button>
+    <span class="d-none message-sent">
+      Message sent <i class="fas fa-check text-success"></i>
+    </span>
+    <span class="d-none message-sending">
+      Message in progress <i class="fas fa-spinner fa-spin text-info"></i>
+    </span>
+    <span class="d-none message-failed">
+      Contact failed <i class="fas fa-times text-danger"></i>
+    </span>
+</form>
+{{this | add_script("
+$('#form-%s').on('submit', function(e) {
+  form_validation($, this, e)
+})" % i, embed=True) }}
+{{this | add_script("shortcodes/form_validation.js", template=True)}}
