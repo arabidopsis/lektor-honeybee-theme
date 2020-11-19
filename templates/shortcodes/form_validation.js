@@ -4,7 +4,7 @@ function form_validation($, form, e) {
     const $form = $(form);
     $form.removeClass(['sent','failed','sending'])
     
-    form.classList.add('was-validated');
+    $form.addClass('was-validated');
     if (form.checkValidity() === false) {
         return
     }
@@ -22,7 +22,7 @@ function form_validation($, form, e) {
         enctype: 'multipart/form-data'
     }).done(function() {
         $form.addClass('sent')
-    }).fail(() => {
+    }).fail(function() {
         $form.addClass('failed')
-    }).always(() => $form.removeClass('sending'))
+    }).always(function() { $form.removeClass('sending') })
 }

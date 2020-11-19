@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   {%- for page in [site.root] if page != this recursive %}
-  <url><loc>{{ page|url(external=true) }}</loc>
-  <changefreq>{{this.changefreq}}</changefreq>
-  <lastmod>{{page | lastmod}}</lastmod>
-  </url>
-  {{- loop(page.children|sort(attribute='path')) }}
+  {% if not page._model == 'publication' %}
+    <url><loc>{{ page|url(external=true) }}</loc>
+    <changefreq>{{this.changefreq}}</changefreq>
+    <lastmod>{{page | lastmod}}</lastmod>
+    </url>
+    {{- loop(page.children|sort(attribute='path')) }}
+  {% endif %}
   {%- endfor %}
 </urlset>

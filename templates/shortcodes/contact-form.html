@@ -1,7 +1,8 @@
 {%- set i = get_random_id() -%}
 
 <form id="form-{{i}}" method="{{method|default('POST')}}"
-  action="{{action}}" accept-charset="UTF-8" role="form" class="needs-validation {{args|join(' ')}}" novalidate>
+  action="{{action}}" accept-charset="UTF-8" role="form" 
+  class="needs-validation {{args|join(' ')}}" novalidate>
 
     <div class="form-group">
       <label  for="name-{{i}}">Your Name:</label>
