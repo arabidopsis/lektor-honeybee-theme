@@ -24,5 +24,7 @@ function form_validation($, form, e) {
         $form.addClass('sent')
     }).fail(function() {
         $form.addClass('failed')
-    }).always(function() { $form.removeClass('sending') })
+    }).always(function() { 
+        $form.removeClass('sending') 
+    })
 }
