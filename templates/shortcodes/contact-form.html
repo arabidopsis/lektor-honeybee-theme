@@ -1,7 +1,7 @@
 {%- set i = get_random_id() -%}
 
 <form id="form-{{i}}" method="{{method|default('POST')}}"
-  action="{{action}}" accept-charset="UTF-8" role="form" 
+  action="{{action|action_url}}" accept-charset="UTF-8" role="form" 
   class="needs-validation {{args|join(' ')}}" novalidate>
 
     <div class="form-group">
@@ -33,7 +33,7 @@
       <textarea id="message-{{i}}" name="message" 
         class="form-control" required aria-labelledby="message-{{i}}"></textarea>
       <div class="invalid-feedback">
-        Please send a message
+        Please write a message
       </div>
     </div>
     <button class="btn btn-primary mr-1" type="submit">Send</button>
