@@ -1,0 +1,7 @@
+{%- macro tag(t) -%}
+<span class="tag {{t}} badge badge-info p-1 ml-1 mr-1">{{t}}</span>
+{%- endmacro -%}
+
+{%- macro tags(taglist) -%}
+{%- for t in taglist -%}{{tag(t)}}{% endfor -%}
+{%- endmacro -%}

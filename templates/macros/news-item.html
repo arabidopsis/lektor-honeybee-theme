@@ -1,46 +1,55 @@
-{%- macro wrap_link(this, full, cls="") -%}
-  {% if not full %}
-  <a href="{{this|url}}" class="{{cls}}">
-  {{ caller() }}
-  </a>
-  {%- else -%}
-    {{caller()}}
-  {%- endif -%}
-{%- endmacro -%}
-
-{% macro news_item(this, imgsize=100, full=False) %}
+{%- from "macros/tags.html" import tags -%}
 {%- from "macros/logos.html" import logos -%}
-{%- set w = 100 if full else 25 -%}
+
+{% macro news_item(this, imgsize=100, cols=4) %}
+{%- set w = 100/cols -%}
 {%- set author = site.get(this.author) -%}
 {%- set i = this.attachments.images.first() -%}
-<div class="card border-0 mb-2" style="min-width:{{w - 4}}%;width:{{w}}%;max-width:{{w}}%">
+<div class="card border-0 mb-2" style="width:{{w}}%;min-width:{{w - 3}}%;max-width:{{w}}%">
   
     {% if i %}
-    {% call wrap_link(this, full, "mx-auto") %}
+    <a href="{{this|url}}" class="mx-auto">
     <img class="card-img-top filter-xbw border-info shadow img-thumbnail"
-        {% if full -%}
-        src="{{i.thumbnail(height=imgsize)|url}}"
-        {%- else -%}
         src="{{i.thumbnail(height=imgsize,width=imgsize, mode='crop')|url}}"
-        {%- endif %}
         alt="{{i.description}}"> 
-    {% endcall %}
+    </a>
     {% endif %}
 
   <div class="card-body">
-    <h4 class="card-title">{% call wrap_link(this, full) %}{{this.title}}{% endcall %}</h4>
+    <h4 class="card-title"><a href="{{this|url}}">{{this.title}}</a></h4>
     <p class="card-text">
     Published on: {{this.date}}{% if author %} by <a href="{{author|url}}">{{author.name}}</a>{% endif %}.
-    Tags: {{this.tags|join(', ')}}
-    {% if full %}
-    <div class="markdown">{{ this.body }}</div>
-    {% endif %}
+    Tags: {{tags(this.tags)}}
     </p>
   </div>
-
-
   <footer>
-    {{logos(author, "Follow me on:")}}
+    <small>{{logos(author, "Follow me on:")}}</small>
   </footer>
 </div>
+{% endmacro %}
+
+{% macro full_news_item(this, imgsize=300) %}
+{%- set author = site.get(this.author) -%}
+{%- set i = this.attachments.images.first() -%}
+<div class="full-news-item">
+  {% if i %}
+    <img class="border-info shadow img-thumbnail w-75 d-block mx-auto mb-4"
+        src="{{i.thumbnail(height=imgsize)|url}}"
+        alt="{{i.description}}"> 
+  {% endif %}
+  <div class="separator-heading">
+    <h3>{{this.title}}</h3>
+  </div>
+  <p>
+    Published on: {{this.date}}{% if author %} by <a href="{{author|url}}">{{author.name}}</a>{% endif %}.
+    Tags: {{tags(this.tags)}}
+  <p>
+  <div class="markdown clearfix">{{ this.body }}</div>
+
+
+  <hr/>
+    {{logos(author, "Follow me on:")}}
+</div>
+
+
 {% endmacro %}

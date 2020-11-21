@@ -155,7 +155,9 @@ img.filter-xbw:hover {
 }
 
 
-i.feature.fas, span.feature.fas {
+i.feature.fas, span.feature.fas,
+i.feature.far, span.feature.far,
+i.feature.fab, span.feature.fab {
   width: 2em;
   height: 2em;
   font-size: 3em;
@@ -199,18 +201,18 @@ i.feature.fas, span.feature.fas {
   text-decoration: none;
   margin-left:.2em;
 }
-.social-logos a i.fab {
+.social-logos .fab {
   font-size: 1.2em;
   transition: transform 1s ease-in-out;
   filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2));
 }
-body.dark .social-logos a i.fab {
+body.dark .social-logos .fab {
   filter: none;
 }
-.social-logos a i.fab:hover {
+.social-logos .fab:hover {
   transform: rotate(360deg)
 }
-.social-logos a i.fab.fa-instagram {
+.social-logos .fab.fa-instagram {
 
   background-image: radial-gradient(circle farthest-corner at 
   32% 106%, rgb(255, 225, 125) 0%, rgb(255, 205, 105) 10%,
@@ -230,3 +232,16 @@ body.dark .social-logos a i.fab {
 form.sending .message-sending { display: inline!important; }
 form.sent .message-sent { display: inline!important; }
 form.failed .message-failed { display: inline!important; }
+
+/* some inline styles of our own */
+
+.drop-shadow {
+  filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2));
+}
+
+.tumble {
+  transition: transform 1s ease-in-out;
+}
+.tumble:hover {
+  transform: rotate(360deg)
+}

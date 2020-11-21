@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% from "macros/news-item.html" import news_item %}
+{% from "macros/news-item.html" import news_item, full_news_item %}
 {% from "macros/pagination.html" import render_pagination %}
 
 {% block body %}
@@ -13,10 +13,7 @@
   {% set frontpage = this.children.filter(F.tags.contains('frontpage')).first() %}
   {% if frontpage %}
     <div class="w-75 mx-auto">
-      <div class="separator-heading">
-        <h2>Current Highlight</h2>
-      </div>
-      {{ news_item(frontpage, imgsize=400, full=True) }}
+      {{ full_news_item(frontpage, imgsize=400) }}
     </div>
   {% endif %}
   <hr/>
@@ -25,7 +22,7 @@
   {% endif %}
   <div class="card-deck pt-5 justify-content-around">
       {% for p in this.pagination.items %}
-        {{ news_item(p, imgsize=200) }}
+        {{ news_item(p, imgsize=200, cols=4) }}
       {% endfor %}
   </div>
   {% if this.pagination.pages > 1 %}

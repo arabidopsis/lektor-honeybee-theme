@@ -3,7 +3,7 @@
 {%- from "macros/carousel.html" import carousel_page -%}
 {%- from "macros/show-item.html" import show_item -%}
 {%- from "macros/parallax.html" import parallax -%}
-{%- from "macros/news-item.html" import news_item -%}
+{%- from "macros/news-item.html" import full_news_item -%}
 {% block body %}
 <div class="container">
   <div class="separator-heading">
@@ -19,7 +19,7 @@
     <div class="separator-heading">
       <h2>Current Highlight</h2>
     </div>
-    {{ news_item(frontpage, imgsize=600, full=True) }}
+    {{ full_news_item(frontpage, imgsize=600) }}
 </div>
 {% endif %}
 {% if this.fragments %}
