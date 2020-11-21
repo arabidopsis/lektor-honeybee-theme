@@ -1,17 +1,18 @@
 
 
-{% macro carousel_page( page , height=480) %}
-{% set slides = page.attachments.images.filter(F._id.isin(page.slideshow)).all() %}
+{%- macro carousel_page( page , height=480) -%}
+{%- set slides = page.attachments.images.filter(F._id.isin(page.slideshow)).all() -%}
 {# set slides = page.attachments.images|selectattr("description", "in", page.slideshow) #}
 {{carousel(slides, height=height)}}
-{% endmacro %}
-{% macro carousel(images, height=480) %}
-{% set id = get_random_id() %}
-{% set is_dark_theme = config.THEME_SETTINGS.is_dark_theme == 'true' %}
-{% set bg = 'dark' if is_dark_theme else 'light' %}
+{%- endmacro -%}
+
+{%- macro carousel(images, height=480) -%}
+{%- set id = get_random_id() -%}
+{%- set is_dark_theme = config.THEME_SETTINGS.is_dark_theme == 'true' -%}
+{%- set bg = 'dark' if is_dark_theme else 'light' -%}
 <div id="id-{{id}}" class="carousel slide bg-{{bg}}" data-ride="carousel">
   <div class="carousel-inner">
-    {% for img in images %}
+    {% for img in images -%}
     <div class="carousel-item {{ 'active' if loop.index0 ==0 else ''}}">
       <img class="d-block mx-auto" style="height:{{height}}px;"
       src="{{img.thumbnail(height=height) | url}}" alt="{{loop.index}} slide">
@@ -20,7 +21,7 @@
         <p>{{ img.description | truncate(30) }}</p>
       </div>
     </div>
-    {% endfor %}
+    {% endfor -%}
   </div>
   <a class="carousel-control-prev" href="#id-{{id}}"
       role="button" data-slide="prev">
@@ -33,4 +34,4 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-{% endmacro %}
+{%- endmacro -%}
