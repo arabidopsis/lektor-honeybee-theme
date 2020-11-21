@@ -46,12 +46,12 @@ footer {
 }
 
 
-.separator-heading h1,
-.separator-heading h2,
-.separator-heading h3,
-.separator-heading h4,
-.separator-heading h5,
-.separator-heading h6 {
+h1.hl,
+h2.hl,
+h3.hl,
+h4.hl,
+h5.hl,
+h6.hl {
   display:flex;
   color: var(--highlight-color);
   flex-direction:row;
@@ -61,18 +61,18 @@ footer {
   margin-top: 1em;
 }
 
-.separator-heading h1:before,
-.separator-heading h2:before,
-.separator-heading h3:before,
-.separator-heading h4:before,
-.separator-heading h5:before,
-.separator-heading h6:before,
-.separator-heading h1:after,
-.separator-heading h2:after,
-.separator-heading h3:after,
-.separator-heading h4:after,
-.separator-heading h5:after,
-.separator-heading h6:after {
+h1.hl:before,
+h2.hl:before,
+h3.hl:before,
+h4.hl:before,
+h5.hl:before,
+h6.hl:before,
+h1.hl:after,
+h2.hl:after,
+h3.hl:after,
+h4.hl:after,
+h5.hl:after,
+h6.hl:after {
 	background-color: var(--highlight-color);
 	content:'\a0';
 	flex-grow:1;

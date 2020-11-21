@@ -6,9 +6,9 @@
 {%- from "macros/news-item.html" import full_news_item -%}
 {% block body %}
 <div class="container">
-  <div class="separator-heading">
-    <h2>{{this.title}}</h2>
-  </div>
+
+  <h2 class="hl">{{this.title}}</h2>
+ 
   <div class="markdown">
    {{this.body}}
   </div>
@@ -16,9 +16,8 @@
 {% set frontpage = site.get('/news').children.filter(F.tags.contains('frontpage')).first() %}
 {% if frontpage %}
 <div class="container w-75">
-    <div class="separator-heading">
-      <h2>Current Highlight</h2>
-    </div>
+    <h2 class="hl">Current Highlight</h2>
+
     {{ full_news_item(frontpage, imgsize=600) }}
 </div>
 {% endif %}

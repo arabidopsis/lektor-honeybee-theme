@@ -37,9 +37,8 @@
         src="{{i.thumbnail(height=imgsize)|url}}"
         alt="{{i.description}}"> 
   {% endif %}
-  <div class="separator-heading">
-    <h3>{{this.title}}</h3>
-  </div>
+  <h3 class="hl">{{this.title}}</h3>
+
   <p>
     Published on: {{this.date}}{% if author %} by <a href="{{author|url}}">{{author.name}}</a>{% endif %}.
     Tags: {{tags(this.tags)}}
