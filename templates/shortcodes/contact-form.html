@@ -49,6 +49,6 @@
 </form>
 {{this | add_script("
 $('#form-%s').on('submit', function(e) {
-  form_validation($, this, e)
+  API.form_validation($, this, e)
 })" % i, embed=True) }}
 {{this | add_script("shortcodes/form_validation.js", template=True)}}

@@ -1,5 +1,5 @@
 /*{# https://openlayersbook.github.io/ch02-key-concepts-in-openlayers/example-02.html  #}*/
-function omap_layout(data) {
+API.omap_layout = function(data) {
     let {lon, lat, z, mapid} = data;
     lat = +lat
     lon = +lon

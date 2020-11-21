@@ -1,4 +1,4 @@
-function form_validation($, form, e) {
+API.form_validation = function($, form, e) {
     e.preventDefault();
     e.stopPropagation();
     const $form = $(form);
