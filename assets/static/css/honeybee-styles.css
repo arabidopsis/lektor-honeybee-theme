@@ -233,6 +233,7 @@ form.sending .message-sending { display: inline!important; }
 form.sent .message-sent { display: inline!important; }
 form.failed .message-failed { display: inline!important; }
 
+.ol-attribution { font-size: smaller; }
 /* some inline styles of our own */
 
 .drop-shadow {
