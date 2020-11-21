@@ -15,6 +15,17 @@ body, button, input, select, textarea {
     line-height: 1.6em;
 }
 
+.nav-item.active > .nav-link { background-color: var(--highlight-color); }
+        
+nav .breadcrumb {
+    z-index: 1;
+    position:absolute; 
+    background: rgba(255,200,200,.3);
+}
+
+footer .logos a { text-align: center; }
+footer .logos a img { height: 4em; }
+
 .text-shadow { text-shadow: 3px 3px 7px #efefef; }
 
 
@@ -136,6 +147,7 @@ img.filter-xbw:hover {
 
 
 .font-larger { font-size: larger; }
+.font-smaller { font-size: smaller; }
 /* for use with icons.svg */
 .icon {
   display: inline-block;
@@ -206,6 +218,7 @@ i.feature.fab, span.feature.fab {
   transition: transform 1s ease-in-out;
   filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2));
 }
+
 body.dark .social-logos .fab {
   filter: none;
 }
@@ -234,6 +247,7 @@ form.sent .message-sent { display: inline!important; }
 form.failed .message-failed { display: inline!important; }
 
 .ol-attribution { font-size: smaller; }
+
 /* some inline styles of our own */
 
 .drop-shadow {
