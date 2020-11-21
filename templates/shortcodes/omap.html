@@ -1,6 +1,6 @@
 {#-
 
-{{omap w-75 mx-auto shadow rounded border border-info lon=115.8184 lat=-31.98161 z=17 height=400  opacity=.8
+{{omap w-75 mx-auto shadow rounded border border-info lon=115.8184 lat=-31.98161 zoom=17 height=400  opacity=.8
 body="We are here in the Baylis building over here and here yas!" header="Us!"}} 
 
 -#}
@@ -15,4 +15,4 @@ body="We are here in the Baylis building over here and here yas!" header="Us!"}}
 {{this | add_script('https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js')}}
 {{this | add_script("https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/css/ol.css", css=True)}}
 {{this | add_script('shortcodes/omap.js', template=True) }}
-{{this | add_script("API.omap_layout(%s)" % kwargs|mergedict(mapid=i, body=''), embed=True) }}
+{{this | add_script("API.omap_layout(%s)" % kwargs|mergedict(mapid=i, body='', header='')|tojson, embed=True) }}

@@ -1,9 +1,10 @@
 /*{# https://openlayersbook.github.io/ch02-key-concepts-in-openlayers/example-02.html  #}*/
+window.API = window.API || {}
 API.omap_layout = function(data) {
-    let {lon, lat, z, mapid} = data;
+    let {lon, lat, zoom, mapid} = data;
     lat = +lat
     lon = +lon
-    z = +z
+    zoom = +zoom
     const map = new ol.Map({
         target: 'map-' + mapid,
         layers: [
@@ -13,7 +14,7 @@ API.omap_layout = function(data) {
         ],
         view: new ol.View({
             center: ol.proj.fromLonLat([lon,lat]),
-            zoom: z
+            zoom: zoom
         })
     });
 

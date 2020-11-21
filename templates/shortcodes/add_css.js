@@ -1,3 +1,4 @@
+window.API = window.API || {}
 API.add_css =function(url) {
     const link = document.createElement('link')
     link.rel = 'stylesheet'

@@ -1,3 +1,4 @@
+window.API = window.API || {}
 API.form_validation = function($, form, e) {
     e.preventDefault();
     e.stopPropagation();
