@@ -1,5 +1,5 @@
 {% from "macros/vignette.html" import vignette %}
-{% macro vignettes(v) %}
+{% macro vignettes(v, cols=4) %}
 <div class="container">
 
   <h2 class="hl">{{v.title}}</h2>
@@ -8,7 +8,7 @@
    {{v.body}}
   </div>
   <div class="card-deck pt-5 justify-content-around" >
-    {% for b in v.vignettes.blocks %}{{ vignette(b) }}{% endfor %}
+    {% for b in v.vignettes.blocks %}{{ vignette(b, cols=cols) }}{% endfor %}
   </div>
 </div>
 {% endmacro %}
