@@ -23,8 +23,6 @@
     {%- endif -%}
     </p>
   </div>
-  {%- set handles = person.twitter or person.instagram -%}
-
-  {%- if handles -%}<footer>{{logos(person, "Follow me on:")}}</footer>{%- endif -%}
+  <footer>{{logos(person, "Follow me on:")}}</footer>
 </div>
 {% endmacro %}

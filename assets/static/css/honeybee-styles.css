@@ -213,16 +213,19 @@ i.feature.fab, span.feature.fab {
   text-decoration: none;
   margin-left:.2em;
 }
-.social-logos .fab {
+.social-logos .fab,
+.social-logos img {
   font-size: 1.2em;
   transition: transform 1s ease-in-out;
   filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2));
 }
 
-body.dark .social-logos .fab {
+body.dark .social-logos .fab, 
+body.dark .social-logos img {
   filter: none;
 }
-.social-logos .fab:hover {
+.social-logos .fab:hover,
+.social-logos img:hover {
   transform: rotate(360deg)
 }
 .social-logos .fab.fa-instagram {
