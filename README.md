@@ -50,8 +50,6 @@ theme = sunset
 # is this theme a dark theme i.e. light text on dark background
 is_dark_theme = false
 # bootstrap = {some-bootstrap.css}
-twitter = twitter handle for site
-facebook = facebook page for site
 ```
 
 The theme can be one of: `mickie`, `hollar`, `sunset`,`wandoo`, `graymor`, `electro`, `lymcha`, `deeply`, `minco`, `skeeblu`, `preptor` or `monotone`.
@@ -60,3 +58,8 @@ at [https://themestr.app/](https://themestr.app/) or see [http://themes.guide/](
 
 If you have built your own place it in `/assets/static/css/{mytheme.css}` and
 add a `bootstrap = mytheme.css` to the the `[theme_settings]`. (Don't bother to set `theme` in this case)
+
+## `/extras/globals` page
+
+The page `/extras/globals` defines some site wide parameters including
+twitter handles, facebook handles, highlight color etc.
