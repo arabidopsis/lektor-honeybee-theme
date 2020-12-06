@@ -77,7 +77,15 @@ h2.hl:before,
 h3.hl:before,
 h4.hl:before,
 h5.hl:before,
-h6.hl:before,
+h6.hl:before {
+	background-color: var(--highlight-color);
+	content:'\a0';
+	flex-grow:1;
+	height:2px;
+	position:relative;
+  top:0.65em;
+  margin-right:.1em;
+}
 h1.hl:after,
 h2.hl:after,
 h3.hl:after,
@@ -89,7 +97,8 @@ h6.hl:after {
 	flex-grow:1;
 	height:2px;
 	position:relative;
-	top:0.65em;
+  top:0.65em;
+  margin-left:.1em;
 }
 
 
