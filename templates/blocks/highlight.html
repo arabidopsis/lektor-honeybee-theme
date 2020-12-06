@@ -2,15 +2,15 @@
 {%- from "macros/carousel.html" import carousel_page -%}
 {%- from "macros/parallax.html" import parallax -%}
 {% if this.path %}
-  {% set s = site.get(this.path) %}
+  {%- set s = site.get(this.path) -%}
   {% if s %}
-    {% set type = s._model %}
-    {% if type == 'parallax' %}
+    {%- set type = s._model -%}
+    {%- if type == 'parallax' -%}
       {{ parallax(s) }}
-    {% elif type == 'vignettes' %}
+    {%- elif type == 'vignettes' -%}
       {{ vignettes(s) }}
-    {% elif type == 'carousel' %}
+    {%- elif type == 'carousel' -%}
       {{ carousel_page(s) }}
-    {% endif %}
+    {%- endif -%}
   {% endif %}
 {% endif %}
