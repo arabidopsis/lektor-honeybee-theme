@@ -113,10 +113,19 @@ h6.hl:after {
   overflow: hidden;
 }
 
+blockquote {
+  border-left: solid 4px rgba(200,200,200,.8);
+  padding-left: 1em;
+  margin-left: 1em! important;
+}
+
 .parallax-window blockquote {
   color: gray;
   font-size:1.5em;
   background-color: rgba(230, 230, 230, .5);
+  border-left: inherit;
+  padding-left: inherit;
+  margin-left: inherit;
 }
 
 @media (max-width:  576px) {
@@ -128,6 +137,29 @@ h6.hl:after {
         font-size: 1em !important;
         overflow-y: hidden;
     }
+}
+
+.admonition .card-header {
+  font-weight: bold;
+}
+
+.admonition-warning .card-header {
+  background-color: var(--danger);
+}
+.admonition-tip .card-header {
+  color: var(--highlight-color);
+}
+.admonition-info .card-header {
+  background-color: var(--info);
+}
+.admonition-warning {
+  border-color: var(--danger)!important;
+}
+.admonition-tip {
+  border-color: var(--highlight-color)!important;
+}
+.admonition-info {
+  border-color: var(--info)!important;
 }
 
 /* from https://github.com/GianlucaGuarini/jQuery.BlackAndWhite */

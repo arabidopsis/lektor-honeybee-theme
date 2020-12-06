@@ -38,5 +38,10 @@
       <img src="{{'/static/img/researchgate.png'|asseturl}}" style="height:.9em!important;margin-bottom:.3em"/>
   </a>
   {%- endif -%}
+  {%- if g.snapchat -%}
+  <a href="https://snapchat.com/{{g.snapchat}}"
+      target="_blank"><i style="color:#FFFC00;" class="fab fa-snapchat" /></i>
+  </a>
+  {%- endif -%}  
   </div>
 {% endmacro %}
