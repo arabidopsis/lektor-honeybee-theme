@@ -231,18 +231,19 @@ i.feature.fab, span.feature.fab {
   .w-md-50 { width:100% !important; }
 }
 
-/* when bootstrap flex-flow: column; */
-.card-deck {
-  align-items: center;
-}
-@media (min-width: 576px) {
+/* bootstrap4 -> bootstrap5 */
 
-  /* when bootstrap flex-flow: row wrap; */
-  .card-deck {
-     align-items:stretch;
-  }
-
+.carousel-item {
+  align-items: inherit!important;
+  perspective: inherit!important;
 }
+.float-left {
+  float: left!important;
+}
+.float-right {
+  float: right!important;
+}
+/* ------------------ */
 
 .social-logos {
   vertical-align: middle;

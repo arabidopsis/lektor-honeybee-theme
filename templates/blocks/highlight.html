@@ -4,13 +4,13 @@
 {% if this.path %}
   {%- set s = site.get(this.path) -%}
   {% if s %}
-    {%- set type = s._model -%}
-    {%- if type == 'parallax' -%}
+    {%- set model = s._model -%}
+    {%- if model == 'parallax' -%}
       {{ parallax(s) }}
-    {%- elif type == 'vignettes' -%}
-      {{ vignettes(s) }}
-    {%- elif type == 'carousel' -%}
-      {{ carousel_page(s) }}
+    {%- elif model == 'vignettes' -%}
+      <div class="container">{{ vignettes(s) }}</div>
+    {%- elif model == 'carousel' -%}
+      <div class="container">{{ carousel_page(s) }}</div>
     {%- endif -%}
   {% endif %}
 {% endif %}

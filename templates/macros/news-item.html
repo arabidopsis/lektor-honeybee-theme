@@ -1,11 +1,10 @@
 {%- from "macros/tags.html" import tags -%}
 {%- from "macros/logos.html" import logos -%}
 
-{% macro news_item(this, imgsize=100, cols=4) %}
-{%- set w = 100/cols -%}
+{% macro news_item(this, imgsize=100) %}
 {%- set author = site.get(this.author) -%}
 {%- set i = this.attachments.images.first() -%}
-<div class="card border-0 mb-2" style="width:{{w}}%;min-width:{{w - 3}}%;max-width:{{w}}%">
+<div class="card border-0 mb-2">
   
     {% if i %}
     <a href="{{this|url}}" class="mx-auto">

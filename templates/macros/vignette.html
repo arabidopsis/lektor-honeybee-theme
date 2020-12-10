@@ -1,6 +1,5 @@
-{% macro vignette(b, cols=4) %}
-{%- set w = 100 / cols -%}
-<div class="card text-center border-0" style="width:{{w}}%;min-width:{{w - 3}}%;max-width:{{w}}%">
+{% macro vignette(b) %}
+<div class="card text-center border-0">
   <a href="{{b.link}}">
   <img class="card-img-top filter-bw"
     src="{{ ('/static/img/cta/cta-icon_' + b.icon + '-opt.svg') | asseturl }}"

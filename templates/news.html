@@ -20,9 +20,9 @@
   {% if this.pagination.pages > 1 %}
     {{ render_pagination(this.pagination) }}
   {% endif %}
-  <div class="card-deck pt-5 justify-content-around">
+  <div class="row row-cols-4 pt-5 align-items-stretch justify-content-around">
       {% for p in this.pagination.items %}
-        {{ news_item(p, imgsize=200, cols=4) }}
+        {{ news_item(p, imgsize=200) }}
       {% endfor %}
   </div>
   {% if this.pagination.pages > 1 %}
