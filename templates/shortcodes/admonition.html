@@ -1,0 +1,10 @@
+{%- set FA = {
+    'note': "fas fa-sticky-note",
+    'info': "fas fa-info-circle",
+    'tip': "fas fa-thumbs-up",
+    'warning': "fas fa-exclamation-triangle",
+} -%}
+<div class="card admonition admonition-{{cls}} mb-1">
+  <div class="card-header"><i class="{{FA[cls]}}"></i> {{cls|title}}:</div>
+  <div class="card-body">{{body|safe}}</div>
+</div>
