@@ -1,7 +1,6 @@
 {% extends "layout.html" %}
-{% from "macros/vignette.html" import vignette %}
 {% from "macros/vignettes.html" import vignettes %}
 
 {% block body %}
-  {{vignettes(this)}}
+  <div class="container">{{vignettes(this)}}</div>
 {% endblock %}

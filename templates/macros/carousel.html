@@ -21,8 +21,7 @@
     <div class="carousel-item {{ 'active' if loop.index0 == 0 else ''}}">
       <img class="d-block mx-auto" style="height:{{height}}px;"
       src="{{img.thumbnail(height=height) | url}}" alt="slide-{{loop.index}}">
-      <div class="carousel-caption d-none d-md-block text-{% if img.dark %}light{% else %}dark{% endif %}">
-        
+      <div class="carousel-caption d-none d-md-block text-{% if img.dark %}light{% else %}dark{% endif %}">     
         <p>{{ img.description | truncate(30) }}</p>
       </div>
     </div>

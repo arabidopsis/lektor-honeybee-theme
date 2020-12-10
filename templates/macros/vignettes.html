@@ -1,13 +1,13 @@
 {% from "macros/vignette.html" import vignette %}
-{% macro vignettes(v, cols=4) %}
-<div class="container">
+{% macro vignettes(v) %}
+<div class="vignettes">
 
   <h2 class="hl">{{v.title}}</h2>
 
   <div class="markdown">
    {{v.body}}
   </div>
-  <div class="row row-cols-{{cols}} pt-5 justify-content-around" >
+  <div class="row row-cols-{{v.cols | default('4')}} pt-5 justify-content-around" >
     {% for b in v.vignettes.blocks %}{{ vignette(b) }}{% endfor %}
   </div>
 </div>
