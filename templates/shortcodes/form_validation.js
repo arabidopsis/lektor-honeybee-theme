@@ -1,31 +1,35 @@
 window.API = window.API || {}
-API.form_validation = function($, form, e) {
+API.form_validation = function(form, e) {
     e.preventDefault();
     e.stopPropagation();
-    const $form = $(form);
-    $form.removeClass(['sent','failed','sending'])
+    form.classList.remove('sent','failed','sending')
     
-    $form.addClass('was-validated');
+    form.classList.add('was-validated');
     if (form.checkValidity() === false) {
         return
     }
     const fd = new FormData(form);
 
-    $form.addClass('sending')
+    const url = form.getAttribute('action');
 
-    $.ajax({
-        url:$form.attr('action'),
-        type:$form.attr('method'),
-        data:fd,
-        processData: false,
-        cache: false,
-        contentType: false,
-        enctype: 'multipart/form-data'
-    }).done(function() {
-        $form.addClass('sent')
-    }).fail(function() {
-        $form.addClass('failed')
-    }).always(function() { 
-        $form.removeClass('sending') 
-    })
+    const options = {
+        method:form.getAttribute('method'),
+        body: fd,
+    }
+
+    const always = () => form.classList.remove('sending')
+
+    form.classList.add('sending')
+    fetch(url, options)
+        .then((resp) => {
+            if (!resp.ok) {
+                form.classList.add('failed')
+            } else {
+                form.classList.add('sent')
+            }
+
+        })
+        .then(always)
+        .catch(() => { form.classList.add('failed'); always();} )
+
 }

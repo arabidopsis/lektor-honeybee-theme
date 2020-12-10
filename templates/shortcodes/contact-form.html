@@ -48,7 +48,7 @@
     </span>
 </form>
 {{this | add_script("
-$('#form-%s').on('submit', function(e) {
-  API.form_validation($, this, e)
-})" % i, embed=True) }}
+document.getElementById('form-%s').addEventListener('submit', function(e) {
+  API.form_validation(this, e)
+}, false)" % i, embed=True, jquery=False) }}
 {{this | add_script("shortcodes/form_validation.js", template=True)}}
