@@ -27,12 +27,31 @@
     {% include "partials/cdn-css.html" %}
     {% block cdn_css %}{% endblock %}
     
+    {% set theme = config.THEME_SETTINGS.theme %}
     {% set bootstrap = config.THEME_SETTINGS.bootstrap %}
-    {% if bootstrap %}
+
+    {% if theme -%}
+    <link rel="stylesheet" href="https://themesguide.github.io/top-hat/dist/{{theme}}/theme.css" />
+    {%- elif bootstrap -%}
     <link rel="stylesheet" type="text/css" href="{{('/static/css/' ~ bootstrap) | asseturl}}" />
-    {% endif %}
+    {%- endif %}
     <link rel="stylesheet" type="text/css" href="{{'/static/css/honeybee-styles.css' | asseturl}}" />
 
+    {% if theme or bootstrap -%}
+    {#- temporary for bootstrap5 -- since these are bootstrap4 -#}
+    <style>
+    :root {
+        --bs-info : var(--info);
+        --bs-danger : var(--danger);
+        --bs-warning : var(--warning);
+        --bs-success : var(--success);
+        --bs-primary : var(--primary);
+        --bs-secondary : var(--secondary);
+        --bs-light : var(--light);
+        --bs-dark : var(--dark);
+    }
+    </style>
+    {%- endif %} 
     <style>
         :root {
             --highlight-color: {{globals.highlight}};
