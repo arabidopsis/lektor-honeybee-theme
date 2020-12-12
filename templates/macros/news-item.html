@@ -1,7 +1,7 @@
 {%- from "macros/tags.html" import tags -%}
 {%- from "macros/logos.html" import logos -%}
 
-{% macro news_item(this, imgsize=100) %}
+{% macro news_item(this, imgsize=200) %}
 {%- set author = site.get(this.author) -%}
 {%- set i = this.attachments.images.first() -%}
 <div class="card border-0 mb-2">
@@ -27,12 +27,12 @@
 </div>
 {% endmacro %}
 
-{% macro full_news_item(this, imgsize=300) %}
+{% macro full_news_item(this, imgsize=600) %}
 {%- set author = site.get(this.author) -%}
 {%- set i = this.attachments.images.first() -%}
 <div class="full-news-item">
   {% if i %}
-    <img class="border-info shadow img-thumbnail w-75 d-block mx-auto mb-4"
+    <img class="border-info shadow img-thumbnail mb-3"
         src="{{i.thumbnail(height=imgsize)|url}}"
         alt="{{i.description}}"> 
   {% endif %}
@@ -44,10 +44,7 @@
   <p>
   <div class="markdown clearfix">{{ this.body }}</div>
 
-
   <hr/>
     {{logos(author, "Follow me on:")}}
 </div>
-
-
 {% endmacro %}

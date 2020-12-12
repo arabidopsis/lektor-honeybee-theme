@@ -1,25 +1,30 @@
 {% extends "layout.html" %}
 {% from "macros/publication.html" import publication %}
 {% block body %}
-  <div class="container">
-    <h2 class="hl">{{this.title}}</h2>
-    
-    <div class="markdown">{{ this.body }}</div>
-    
-    <hr/>
-
+<div class="container">
+  <h2 class="hl">{{this.title}}</h2> 
+  <div class="markdown">{{ this.body }}</div>
+  <hr/>
+  <div class="publication-list">
+    {%- if this.publications -%}
+    {% for blk in this.publications.blocks %}
+      {%- if blk._model == 'publication' -%}
+       {{publication(blk)}}
+       <hr/>
+      {%- else -%}
+        {{blk}}
+      {%- endif -%}
+    {%- endfor -%}
+    {% endif %}
     {% for pub in this.children.filter(F.date.false()) %}
-      <div class="publication">
       {{publication(pub)}}
-      </div>
       <hr/>
     {% endfor %}
     {% for pub in this.children.filter(F.date.true()) %}
-      <div class="publication">
       {{publication(pub)}}
-      </div>
       <hr/>
     {% endfor %}
   </div>
+</div>
 
 {% endblock body %}

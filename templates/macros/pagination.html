@@ -1,5 +1,3 @@
-
-
 {% macro render_pagination(pagination, all_pages=False) %}
 {% set page_iter = range(1, pagination.pages + 1) if all_pages else pagination.iter_pages(left_edge=1,left_current=1, right_current=2, right_edge=1) %}
 <nav arial-label="Page navigation">

@@ -30,12 +30,12 @@
     {% set theme = config.THEME_SETTINGS.theme %}
     {% set bootstrap = config.THEME_SETTINGS.bootstrap %}
 
-    {% if theme -%}
+    {% if bootstrap -%}
+    <link rel="stylesheet" href="{{('/static/css/' ~ bootstrap) | asseturl}}" />
+    {%- elif theme -%}
     <link rel="stylesheet" href="https://themesguide.github.io/top-hat/dist/{{theme}}/theme.css" />
-    {%- elif bootstrap -%}
-    <link rel="stylesheet" type="text/css" href="{{('/static/css/' ~ bootstrap) | asseturl}}" />
     {%- endif %}
-    <link rel="stylesheet" type="text/css" href="{{'/static/css/honeybee-styles.css' | asseturl}}" />
+    <link rel="stylesheet" href="{{'/static/css/honeybee-styles.css' | asseturl}}" />
 
     {% if theme or bootstrap -%}
     {#- temporary for bootstrap5 -- since these are bootstrap4 -#}
@@ -103,7 +103,7 @@
 
 {% include "partials/cdn-js.html" %}
 
-{{ this|gen_js() }}
+{{ this|gen_js }}
 
 {% block js %}{% endblock js %}
 </body>
