@@ -161,20 +161,13 @@ blockquote {
 .admonition-info {
   border-color: var(--bs-info)!important;
 }
-
-/* from https://github.com/GianlucaGuarini/jQuery.BlackAndWhite */
 img.filter-bw {
-    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
-    filter: gray; /* IE6-9 */
-    -webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
+    filter: grayscale(100%);
     transition: 0.3s ease-in;
 }
-
 img.filter-bw:hover {
-    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
-    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
 }
-
 img.filter-xbw {
   filter: grayscale(0%);
   transition: 0.3s ease-in;
@@ -184,11 +177,7 @@ img.filter-xbw:hover {
   filter: grayscale(100%);
 }
 
-.vignette.card, .more-reading.card { border:none; }
 
-
-.font-larger { font-size: larger; }
-.font-smaller { font-size: smaller; }
 /* for use with icons.svg */
 .icon {
   display: inline-block;
@@ -223,15 +212,7 @@ i.feature.fab, span.feature.fab {
   border-radius: 50%;
 }
 
-
-.w-md-50 {
-  width: 50% !important;
-}
-@media (max-width: 991px) {
-  .w-md-50 { width:100% !important; }
-}
-
-/* bootstrap4 -> bootstrap5 */
+/* bootstrap4 -> bootstrap5 backwards compat. */
 
 .carousel-item {
   align-items: inherit!important;

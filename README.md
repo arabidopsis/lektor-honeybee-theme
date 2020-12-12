@@ -21,6 +21,13 @@ git clone https://github.com/arabidopsis/lektor-shortcodes.git $(lektor project-
 lektor plugins list # list will install any newly found plugins
 ```
 
+This theme uses **bootstrap5** and has no "internal" dependency
+on jQuery. Some shortcodes require some vanilla javascript to
+work. In paticular the `contact-form` shortcode uses some vanilla javascript
+to do form validation. Also  the `twitter` and `omap` shortcodes will
+install their javascript libraries. If you have set `ua_google` then
+this will *also* add its library.
+
 ## 404
 
 To add a 404 page just add to a `content/404.html/contents.lr` file:
@@ -47,7 +54,7 @@ ua_google = UA-XXXXX-Y
 changefreq = monthly
 # default is no theme
 theme = sunset
-# is this theme a dark theme i.e. light text on dark background
+# is this theme a dark theme? i.e. light text on dark background
 is_dark_theme = false
 # bootstrap = {some-bootstrap.css}
 ```
@@ -63,3 +70,29 @@ add a `bootstrap = mytheme.css` to the the `[theme_settings]`. (Don't bother to 
 
 The page `/extras/globals` defines some site wide parameters including
 twitter handles, facebook handles, highlight color etc.
+
+## classes used in this theme
+
+These are the "extra" classes known to this theme (apart from
+bootstrap5 classes!). Currently only `hl`, `admonition-*`, `filter-x?bw`,
+`social-logos` and `feature` have any css styles attached to them.
+
+Also the class `dark` or `light` is attached to `body` based on
+`config.THEME_SETTINGS.is_dark_theme`
+
+* `content` wraps the entire document
+* `hl` highlight class for h1,h2 etc.
+* `markdown` wraps all markdown blocks
+* `publication-list` wraps list of publications
+  * `publication` wrapped by `publication-list` and wraps
+    * `pub-date`, `pub-doi` , `pub-date`, `pub-pubmed`, `pub-title`, 
+      `pub-journal`, `pub-authors` and `pub-ref`
+* `social-logos` followed by `follow` wraps any social logos links
+* `parallax-window` for parallax blocks
+* `full-news-item` wraps a full news item card
+* `sitemap` wraps sitemap links
+* `admonition` and `admonition-note`, `admonition-tip`, `admonition-warning`, `admonition-info` for admonition "shortcode".
+* `feature` for feature shortcode `{{feature beer}}`
+* `logo` for logo overlaying header
+* `vignettes` wraps vignette list marked by `vignette`
+* `filter-bw` and `filter-xbw` grayscale image hovers

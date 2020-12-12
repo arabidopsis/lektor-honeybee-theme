@@ -1,10 +1,10 @@
 {% macro vignette(b) %}
-<div class="card text-center border-0">
+<div class="vignette card text-center border-0">
   <a href="{{b.link}}">
-  <img class="card-img-top filter-bw"
-    src="{{ ('/static/img/cta/cta-icon_' + b.icon + '-opt.svg') | asseturl }}"
-    alt="{{b.icon}}">
-</a>
+    <img class="card-img-top filter-bw"
+      src="{{ ('/static/img/cta/cta-icon_' + b.icon + '-opt.svg') | asseturl }}"
+      alt="{{b.icon}}">
+  </a>
   <div class="card-body" >
     <h4 class="card-title">{{ b.title }}</h4>
     <p class="card-text">{{ b.text }}</p>
