@@ -32,7 +32,7 @@
 {%- set i = this.attachments.images.first() -%}
 <div class="full-news-item">
   {% if i %}
-    <img class="border-info shadow img-thumbnail mb-3"
+    <img class="border-info shadow mx-auto d-block img-thumbnail mb-3"
         src="{{i.thumbnail(height=imgsize)|url}}"
         alt="{{i.description}}"> 
   {% endif %}
