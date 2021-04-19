@@ -5,7 +5,7 @@
 <span class="pub-authors text-success">{{pub.authors}}</span>
 <span class="pub-journal text-info">{{pub.journal}} {% if pub.date %}({{pub.date.year}}){% endif %}</span>
 {% if pub.pubmed %}<a class="pub-pubmed" target="_blank" href="https://pubmed.ncbi.nlm.nih.gov/{{pub.pubmed}}/">PubMed: {{pub.pubmed}}</a>{% endif %}
-{% if pub.doi %}<a class="pub-doi" target="_blank" href="https://dx.doi.org/{{pub.doi}}/">DOI: {{pub.doi}}</a>{% endif %}
+{% if pub.doi %}<a class="pub-doi" target="_blank" href="https://dx.doi.org/{{pub.doi}}">DOI: {{pub.doi}}</a>{% endif %}
 {%- if pub.attachments -%}
 {%- set paper = pub.attachments.first() -%}
 {%- if paper -%}<a target="_blank" class="pub-ref" download href="{{paper|url}}">{{paper.description}}</a>{%- endif -%}
