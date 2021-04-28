@@ -1,9 +1,9 @@
 {% macro publication(pub) %}
 <div class="publication">
-<span class="pub-date">{% if pub.date %}{{pub.date}}{% else %}in preparation{% endif %}</span> : 
-&ldquo;<span class="pub-title">{{pub.title}}</span>&rdquo;
 <span class="pub-authors text-success">{{pub.authors}}</span>
-<span class="pub-journal text-info">{{pub.journal}} {% if pub.date %}({{pub.date.year}}){% endif %}</span>
+<span class="pub-date">{% if pub.year %}({{pub.year}}){% else %}(in preparation){% endif %}</span> : 
+&ldquo;<span class="pub-title">{{pub.title}}</span>&rdquo;
+<span class="pub-journal text-info">{{pub.journal}}</span>
 {% if pub.pubmed %}<a class="pub-pubmed" target="_blank" href="https://pubmed.ncbi.nlm.nih.gov/{{pub.pubmed}}/">PubMed: {{pub.pubmed}}</a>{% endif %}
 {% if pub.doi %}<a class="pub-doi" target="_blank" href="https://dx.doi.org/{{pub.doi}}">DOI: {{pub.doi}}</a>{% endif %}
 {%- if pub.attachments -%}

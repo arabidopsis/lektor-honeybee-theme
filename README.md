@@ -3,6 +3,15 @@
 A lektor theme for [Honey Bee Health](https://honeybeehealthresearch.org/)
 Content is currently [Here](https://github.com/arabidopsis/honeybeehealthresearch.org)
 
+Create a directory `themes` in the `honebeehealthresearch.org` directory and link this repo:
+
+```bash
+cd honeybeehealthresearch.org
+mkdir themes
+cd themes
+ln -s /path/to/this/repo .
+```
+
 This theme requires a [Lektor plugin](https://github.com/arabidopsis/lektor-shortcodes).
 
 Add to the `[packages]` section of your lektorproject configuration file

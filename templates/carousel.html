@@ -7,7 +7,7 @@
   <div class="markdown">
     {{ this.body }}
   </div>
-  {% set slides = this.attachments.images.filter(F.description.isin(this.slideshow)).all() %}
+  {% set slides = this.attachments.images.filter(F._id.isin(this.slideshow)).all() %}
   {# set slides = this.attachments.images|selectattr("description", "in", this.slideshow) #}
   {{ carousel(slides) }}
 

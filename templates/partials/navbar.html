@@ -1,8 +1,9 @@
 
+{%- from "macros/logos.html" import logos -%}
 {% set bg = 'dark' if is_dark_theme else 'light' %}
-<nav class="navbar navbar-default navbar-expand-lg sticky-top bg-{{bg}}">
+<nav class="navbar navbar-light navbar-expand-lg sticky-top bg-{{bg}}">
     <a class="navbar-brand"  href="{{ '/'|url }}">
-      <img src="{{ ('/static/img/honeybeelogo-nt-opt.svg')|asseturl}}" style="width:1.2em"/>
+      <img src="{{ ('/static/img/honeybeelogo-nt-opt.svg')|asseturl}}" style="width:2.5em"/>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbar-collapse-1"  
@@ -22,6 +23,13 @@
           </li>
           {% endif %}
         {% endfor %}
+        {# <li class="nav-text ms-auto">
+         <img style="height:2.2em; margin-bottom:-1em" src="{{'/static/img/UWA-Full-Hor-CMYK-opt.svg'|asseturl }}"
+            alt="UWA Logo" />
+        </li> #}
       </ul>
+      <div class="d-none d-xl-block">{{logos(globals)}}</div>
+      <img class="ms-auto d-none d-xl-block" style="height:2.2em;" src="{{'/static/img/UWA-Full-Hor-CMYK-opt.svg'|asseturl }}"
+            alt="UWA Logo" />
     </div>
 </nav>

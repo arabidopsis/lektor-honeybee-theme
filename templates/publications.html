@@ -6,16 +6,15 @@
   <div class="markdown">{{ this.body }}</div>
   <hr/>
   <div class="publication-list">
-    {%- if this.publications -%}
     {% for blk in this.publications.blocks %}
-      {%- if blk._model == 'publication' -%}
+      {%- if blk._flowblock == 'publication' -%}
        {{publication(blk)}}
        <hr/>
       {%- else -%}
         {{blk}}
       {%- endif -%}
     {%- endfor -%}
-    {% endif %}
+    {#
     {% for pub in this.children.filter(F.date.false()) %}
       {{publication(pub)}}
       <hr/>
@@ -24,6 +23,7 @@
       {{publication(pub)}}
       <hr/>
     {% endfor %}
+    #}
   </div>
 </div>
 

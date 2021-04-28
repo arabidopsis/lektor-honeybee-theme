@@ -1,9 +1,18 @@
-{%- macro header(width) -%}
+{%- macro site_header(width) -%}
 {%- set s = site.get('/') %}
 {%- set img = s.attachments.images.filter(F._id == s.header).first() -%}
 {%- if img -%}
 {{- img.thumbnail(width) | url -}}
 {%- else -%}
 {{- s.attachments.images.first().thumbnail(width) | url -}}
+{%- endif -%}
+{%- endmacro -%}
+
+{%- macro header(page, width) -%}
+{%- set img = page.attachments.images.filter(F._id == page.header_image).first() -%}
+{%- if img -%}
+{{- img.thumbnail(width) | url -}}
+{%- else -%}
+{{- site_header(width) -}}
 {%- endif -%}
 {%- endmacro -%}

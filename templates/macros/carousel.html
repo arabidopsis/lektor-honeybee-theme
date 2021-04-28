@@ -22,7 +22,7 @@
       <img class="d-block mx-auto" style="height:{{height}}px;"
       src="{{img.thumbnail(height=height) | url}}" alt="slide-{{loop.index}}">
       <div class="carousel-caption d-none d-md-block text-{% if img.dark %}light{% else %}dark{% endif %}">     
-        <p>{{ img.description | truncate(30) }}</p>
+        <p>{{ img.description | truncate(40) }}</p>
       </div>
     </div>
     {% endfor -%}

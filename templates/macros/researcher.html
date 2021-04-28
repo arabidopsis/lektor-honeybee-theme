@@ -1,4 +1,5 @@
 {% macro researcher(person,imgsize=100, full=False) %}
+{% set choice_labels = {'phd': 'PhD Student', 'postdoc':'Post Doctoral', 'student':'Student', 'CI':'Chief Investgator' } %}
 {%- from "macros/logos.html" import logos -%}
 <div class="card border-0 mb-5" style="min-width:{{imgsize}}px">
   <a href="{{person|url}}" style="margin:0 auto;">
@@ -14,7 +15,8 @@
   />
   </a>
   <div class="card-body">
-    <h4 class="card-title">{{person.title}} {{person.name}}</h4>
+    <h4 class="card-title">{{person.title}} {{person.name}} -{{choice_labels[person.status]}}</h4>
+    
     <p class="card-text">
     {%- if full -%}
     <div class="markdown">{{ person.body }}</div>
