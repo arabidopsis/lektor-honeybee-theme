@@ -1,6 +1,7 @@
 {% macro parallax(item) %}
 {%- if item -%}
-{% set img = item.attachments.images.first() %}
+{%- set img = item.attachments.images.first() -%}
+{%- if img -%}
 <div class="parallax-window w-100 d-flex mt-3" style="background-image:url({{img | url}})">
   <div class="container">
     <blockquote class="blockquote p-3 mt-4">
@@ -11,5 +12,6 @@
     </blockquote>
   </div>
 </div>
+{%- endif -%}
 {%- endif -%}
 {% endmacro %}
