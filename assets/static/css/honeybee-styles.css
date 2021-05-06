@@ -59,6 +59,10 @@ header .logo-uwa {
   height: auto;
 }
 
+a.failed-json-request {
+  color: var(--bs-danger)
+}
+
 
 footer {
   border-top: 1px var(--highlight-color) solid;
