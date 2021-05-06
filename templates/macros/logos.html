@@ -1,45 +1,51 @@
-
+{%- macro handle(handle, url) -%}
+{%- if handle.startswith(url) -%}
+    {{ handle }}
+{%- else -%}
+    {{ url }}/{{ handle }}
+{%- endif -%}
+{%- endmacro -%}
 {% macro logos(g, txt="Follow us on:") %}
   <div class="social-logos">
   <span class="follow">{{txt}}</span>
   {%- if g.facebook -%}
-  <a href="https://www.facebook.com/{{g.facebook}}"
+  <a href="{{handle(g.facebook, 'https://www.facebook.com')}}"
       target="_blank"><i style="color:#4267B2" class="fab fa-facebook" /></i>
   </a>
   {%- endif -%}
   {%- if g.instagram -%}
-  <a href="https://www.instagram.com/{{g.instagram}}"
+  <a href="{{handle(g.instagram, 'https://www.instagram.com')}}"
       target="_blank"><i class="fab fa-instagram" /></i>
   </a>
   {%- endif -%}
   {%- if g.twitter -%}
-  <a href="https://twitter.com/{{g.twitter}}"
+  <a href="{{handle(g.twitter, 'https://twitter.com') }}"
       target="_blank"><i style="color:#1DA1F2" class="fab fa-twitter" /></i>
   </a>
   {%- endif -%}
   {%- if g.youtube -%}
-  <a href="https://www.youtube.com/channel/{{g.youtube}}"
+  <a href="{{handle(g.youtube, 'https://www.youtube.com/channel')}}"
       target="_blank"><i style="color:#FF0000" class="fab fa-youtube" /></i>
   </a>
   {%- endif -%}
   {%- if g.pinterest -%}
-  <a href="https://pinterest.com/{{g.pinterest}}"
+  <a href="{{handle(g.pinterest, 'https://pinterest.com')}}"
       target="_blank"><i style="color:#E60023" class="fab fa-pinterest" /></i>
   </a>
   {%- endif -%}
   {%- if g.linkedin -%}
-  <a href="https://linkedin.com/in/{{g.linkedin}}"
+  <a href="{{handle(g.linkedin, 'https://linkedin.com/in')}}"
       target="_blank"><i style="color:#2867B2" class="fab fa-linkedin" /></i>
   </a>
   {%- endif -%}
   {%- if g.researchgate -%}
-  <a href="https://researchgate.net/{{g.researchgate}}"
+  <a href="{{handle(g.researchgate, 'https://researchgate.net')}}"
       target="_blank">{#<i style="color:#42e0e0;" class="fab fa-researchgate" /></i>#}
       <img src="{{'/static/img/researchgate.png'|asseturl}}" style="height:.9em!important;margin-bottom:.3em"/>
   </a>
   {%- endif -%}
   {%- if g.snapchat -%}
-  <a href="https://snapchat.com/{{g.snapchat}}"
+  <a href="{{handle(g.snapchat, 'https://snapchat.com')}}"
       target="_blank"><i style="color:#FFFC00;" class="fab fa-snapchat" /></i>
   </a>
   {%- endif -%}  
