@@ -1,9 +1,17 @@
 {# see https://developer.twitter.com/en/docs/twitter-api/v1/tweets/post-and-engage/api-reference/get-statuses-oembed #}
 
 {# most useful are: align={left,right,center,none} theme={light,dark} #}
+{%- macro handle(handle, url) -%}
+{%- if handle.startswith(url) -%}
+    {{ handle }}
+{%- else -%}
+    {{ url }}/{{ handle }}
+{%- endif -%}
+{%- endmacro -%}
 {%- set is_dark_theme = config.THEME_SETTINGS.is_dark_theme == 'true' -%}
-{%- set url = 'https://twitter.com/' + (args[0]|string) -%}
+{%- set tweet = args[0]|string %}
+{%- set url = tweet if tweet.startswith('https://twitter.com/') else 'https://twitter.com/' + tweet %}
 {%- set params = kwargs | mergedict(url=url, dnt='true', omit_script='true', theme='dark' if is_dark_theme else 'light') -%}
 {% set r = json_request('https://publish.twitter.com/oembed', params=params) %}
-{%if r is defined %}{{ r.html | safe}}{% else %}<a class="failed-json-request" href="{{url}}" target='twitter'>{{args[0]}}</a>{% endif %}
+{%if r is defined %}{{ r.html | safe}}{% else %}<a class="failed-json-request" href="{{url}}" target='twitter'>{{tweet}}</a>{% endif %}
 {{this | add_script('https://platform.twitter.com/widgets.js', async=True)}}
