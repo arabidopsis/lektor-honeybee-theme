@@ -18,7 +18,7 @@
     <h4 class="card-title"><a href="{{this|url}}">{{this.title}}</a></h4>
     <p class="card-text">
     Published on: {{this.date}}{% if author %} by <a href="{{author|url}}">{{author.name}}</a>{% endif %}.
-    Tags: {{tags(this.tags)}}
+    {% if this.tags %}Tags: {{tags(this.tags)}}{% endif %}
     </p>
   </div>
   <footer>
@@ -40,7 +40,7 @@
 
   <p>
     Published on: {{this.date}}{% if author %} by <a href="{{author|url}}">{{author.name}}</a>{% endif %}.
-    Tags: {{tags(this.tags)}}
+    {% if this.tags %}Tags: {{tags(this.tags)}}{% endif %}
   <p>
   <div class="markdown clearfix">{{ this.body }}</div>
 

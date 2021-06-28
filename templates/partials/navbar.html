@@ -2,6 +2,7 @@
 {%- from "macros/logos.html" import logos -%}
 {% set bg = 'dark' if is_dark_theme else 'light' %}
 <nav class="navbar navbar-light navbar-expand-lg sticky-top bg-{{bg}}">
+  <div class="container-fluid">
     <a class="navbar-brand"  href="{{ '/'|url }}">
       <img src="{{ ('/static/img/honeybeelogo-nt-opt.svg')|asseturl}}" style="width:2.5em"/>
     </a>
@@ -16,20 +17,24 @@
         <li class="nav-item{% if this.path == '/' %} active{%endif%}">
           <a class="nav-link" href="{{ '/' |url }}">Home</a>
         </li>
-        {% for page in site.query('/').order_by('title') %}
-          {% if page.path != '/404.html' %}
+        {#- set include = bag('navbar').items()|sort(attribute=1)|map(attribute=0)|list -#}
+        {%- set include = bag('navbar')|dictsort(by='value')|map(attribute=0)|list -%}
+        {% for page_id in include %}
+          {% set page = site.query('/').filter(F._id == page_id ).first() %}
+          {% if page -%}
           <li class="nav-item{% if this.url_path == page.url_path %} active{%endif%}">
             <a class="nav-link" href="{{page | url }}">{{ (page.navbar or page._slug) | trim('/') | split('-') | join(' ') | title }}</a>
           </li>
-          {% endif %}
+          {%- endif %}
         {% endfor %}
         {# <li class="nav-text ms-auto">
          <img style="height:2.2em; margin-bottom:-1em" src="{{'/static/img/UWA-Full-Hor-CMYK-opt.svg'|asseturl }}"
             alt="UWA Logo" />
         </li> #}
       </ul>
-      <div class="d-none d-xl-block">{{logos(globals)}}</div>
-      <img class="ms-auto d-none d-xl-block" style="height:2.2em;" src="{{'/static/img/UWA-Full-Hor-CMYK-opt.svg'|asseturl }}"
+      <div class="ms-auto d-none d-xl-block">{{logos(globals)}}</div>
+      <img class="ms-4 d-none d-xl-block" style="height:2.2em;" src="{{'/static/img/UWA-Full-Hor-CMYK-opt.svg'|asseturl }}"
             alt="UWA Logo" />
     </div>
+  </div>
 </nav>

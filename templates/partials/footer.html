@@ -1,6 +1,7 @@
 
 
 {%- set about = site.get('/about') -%}
+{%- set contact = site.get('/contact-us') -%}
 {%- from "macros/logos.html" import logos -%}
 <footer class="bg-{{'dark' if is_dark_theme else 'light'}} text-{{'light' if is_dark_theme else 'dark'}} mt-3">
 
@@ -10,14 +11,21 @@
         <ul class="list-inline text-center pt-1">
         {% if about %}
           <li class="list-inline-item">
-            <a href="{{about | url }}"> About <span class="fas fa-book"></span> </a>
+            <a href="{{about | url }}"> About <i class="fas fa-book"></i> </a>
           </li>
           <li class="list-inline-item">|</li>
         {% endif %}
+        {% if contact %}
           <li class="list-inline-item">
+            <a href="{{contact | url }}"> Contact Us <i class="far fa-envelope"></i> </a>
+          </li>
+          <li class="list-inline-item">|</li>
+        {% endif %}
+          {#<li class="list-inline-item">
             <a href="https://plantenergy.edu.au" target="_blank">© 2020 Plant Energy Biology</a>
           </li>
           <li class="list-inline-item">|</li>
+          #}
           <li class="list-inline-item">
               {{logos(globals)}}
           </li>      
