@@ -6,9 +6,7 @@
     <div class="form-group">
       <label  for="name-{{i}}">Your Name:</label>
       <div class="input-group">
-        <div class="input-group-prepend">
-          <div class="input-group-text"><i class="far fa-user"></i></div>
-        </div>
+        <div class="input-group-text"><i class="far fa-user"></i></div>
         <input type="text" id="name-{{i}}" name="name" class="form-control" required placeholder=" " aria-labelledby="name-{{i}}"/>
         <div class="invalid-feedback">
           Please supply a name
@@ -18,9 +16,8 @@
     <div class="form-group">
       <label  for="email-{{i}}">Email Address:</label>
       <div class="input-group">
-        <div class="input-group-prepend">
-          <div class="input-group-text">@</div>
-        </div>
+        <div class="input-group-text">@</div>
+
         <input type="email" id="email-{{i}}" name="email" class="form-control" required placeholder=" "  aria-labelledby="email-{{i}}"/>
         <div class="invalid-feedback">
           Email address is required
