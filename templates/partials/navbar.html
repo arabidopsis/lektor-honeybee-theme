@@ -22,8 +22,8 @@
         {% for page_id in include %}
           {% set page = site.query('/').filter(F._id == page_id ).first() %}
           {% if page -%}
-          <li class="nav-item{% if this.url_path == page.url_path %} active{%endif%}">
-            <a class="nav-link" href="{{page | url }}">{{ (page.navbar or page._slug) | trim('/') | split('-') | join(' ') | title }}</a>
+          <li class="nav-item">
+            <a class="nav-link{% if this.url_path == page.url_path %} active{%endif%}" href="{{page | url }}">{{ (page.navbar or page._slug) | trim('/') | split('-') | join(' ') | title }}</a>
           </li>
           {%- endif %}
         {% endfor %}

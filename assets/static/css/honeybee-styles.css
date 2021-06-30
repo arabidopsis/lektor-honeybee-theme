@@ -15,7 +15,7 @@ body, button, input, select, textarea {
     line-height: 1.6em;
 }
 
-.nav-item.active > .nav-link { background-color: var(--highlight-color); }
+.nav-link.active { background-color: var(--highlight-color); }
         
 nav .breadcrumb {
     z-index: 1;

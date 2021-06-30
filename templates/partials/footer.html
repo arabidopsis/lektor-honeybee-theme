@@ -2,6 +2,7 @@
 
 {%- set about = site.get('/about') -%}
 {%- set contact = site.get('/contact-us') -%}
+{%- set sitemap = site.get('/sitemap') -%}
 {%- from "macros/logos.html" import logos -%}
 <footer class="bg-{{'dark' if is_dark_theme else 'light'}} text-{{'light' if is_dark_theme else 'dark'}} mt-3">
 
@@ -18,6 +19,12 @@
         {% if contact %}
           <li class="list-inline-item">
             <a href="{{contact | url }}"> Contact Us <i class="far fa-envelope"></i> </a>
+          </li>
+          <li class="list-inline-item">|</li>
+        {% endif %}
+        {% if sitemap %}
+          <li class="list-inline-item">
+            <a href="{{sitemap | url }}"> Site Map <i class="fas fa-globe"></i> </a>
           </li>
           <li class="list-inline-item">|</li>
         {% endif %}
