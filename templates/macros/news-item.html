@@ -2,7 +2,7 @@
 {%- from "macros/logos.html" import logos -%}
 
 {% macro news_item(this, imgsize=200) %}
-{%- set author = site.get(this.author) -%}
+{%- set author = site.get(this.author) if this.author else None -%}
 {%- set i = this.attachments.images.first() -%}
 <div class="card border-0 mb-2">
   
@@ -28,7 +28,7 @@
 {% endmacro %}
 
 {% macro full_news_item(this, imgsize=600) %}
-{%- set author = site.get(this.author) -%}
+{%- set author = site.get(this.author) if this.author else None -%}
 {%- set i = this.attachments.images.first() -%}
 <div class="full-news-item">
   {% if i %}
